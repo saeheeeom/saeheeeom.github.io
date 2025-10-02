@@ -7,87 +7,857 @@
   <link rel="manifest" href="/site.webmanifest">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Saehee Eom | Portfolio</title>
+  <title>Saehee Eom | Data Scientist & NLP Researcher</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    * {
       margin: 0;
       padding: 0;
-      background: #f9f9f9;
-      color: #333;
+      box-sizing: border-box;
     }
-    header {
-      background: #222;
-      color: white;
-      padding: 2rem;
-      text-align: center;
+    
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --secondary: #64748b;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --shadow: rgba(0, 0, 0, 0.1);
     }
-    section {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background: var(--light);
     }
-    h1, h2 {
-      color: #222;
+    
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px var(--shadow);
+      z-index: 1000;
+      padding: 1rem 0;
     }
-    .project {
-      background: white;
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    
+    nav .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #222;
-      color: white;
-      margin-top: 2rem;
+    
+    nav .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--dark);
     }
-    a {
-      color: #007acc;
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    
+    nav a {
+      color: var(--secondary);
       text-decoration: none;
+      transition: color 0.3s;
+      font-weight: 500;
+    }
+    
+    nav a:hover {
+      color: var(--primary);
+    }
+    
+    /* Hero Section */
+    .hero {
+      margin-top: 80px;
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-align: center;
+    }
+    
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: fadeInUp 0.8s ease;
+    }
+    
+    .hero .subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      opacity: 0.95;
+      animation: fadeInUp 0.8s ease 0.2s backwards;
+    }
+    
+    .hero .description {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      opacity: 0.9;
+      animation: fadeInUp 0.8s ease 0.4s backwards;
+    }
+    
+    .hero .links {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s ease 0.6s backwards;
+    }
+    
+    .hero .links a {
+      color: white;
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border: 2px solid white;
+      border-radius: 8px;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+    
+    .hero .links a:hover {
+      background: white;
+      color: var(--primary);
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    section {
+      padding: 5rem 0;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      text-align: center;
+      color: var(--dark);
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--primary);
+      margin: 1rem auto 0;
+      border-radius: 2px;
+    }
+    
+    /* About Section */
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    
+    .about-content p {
+      margin-bottom: 1.5rem;
+    }
+    
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .highlight {
+      text-align: center;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px var(--shadow);
+      transition: transform 0.3s;
+    }
+    
+    .highlight:hover {
+      transform: translateY(-5px);
+    }
+    
+    .highlight .number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .highlight .label {
+      color: var(--secondary);
+      font-size: 0.9rem;
+    }
+    
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    .project-card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 6px var(--shadow);
+      transition: all 0.3s;
+      border-top: 4px solid var(--primary);
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px var(--shadow);
+    }
+    
+    .project-card .icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .project-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+    
+    .project-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .tag {
+      background: var(--light);
+      color: var(--primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    
+    .project-card p {
+      color: var(--secondary);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    
+    .project-card .metrics {
+      background: #f0f9ff;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: var(--dark);
+    }
+    
+    .project-card a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: gap 0.3s;
+    }
+    
+    .project-card a:hover {
+      gap: 0.75rem;
+    }
+    
+    /* Experience Timeline */
+    .timeline {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      padding-left: 2rem;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      padding-left: 2rem;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 0;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 3px solid white;
+      box-shadow: 0 0 0 3px var(--primary);
+    }
+    
+    .timeline-item .company {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.25rem;
+    }
+    
+    .timeline-item .role {
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .timeline-item .period {
+      color: var(--secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    
+    .timeline-item ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .timeline-item li {
+      margin-bottom: 0.75rem;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--secondary);
+    }
+    
+    .timeline-item li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+    
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    
+    .skill-category {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px var(--shadow);
+    }
+    
+    .skill-category h3 {
+      font-size: 1.25rem;
+      color: var(--dark);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .skill-category .icon {
+      font-size: 1.5rem;
+    }
+    
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    
+    .skill-item {
+      background: var(--light);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: var(--dark);
+      border: 1px solid var(--border);
+    }
+    
+    /* Publications */
+    .publications {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .publication {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px var(--shadow);
+      margin-bottom: 2rem;
+      border-left: 4px solid var(--primary);
+    }
+    
+    .publication h3 {
+      font-size: 1.25rem;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+    
+    .publication .authors {
+      color: var(--secondary);
+      font-style: italic;
+      margin-bottom: 0.5rem;
+    }
+    
+    .publication .venue {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      transition: opacity 0.3s;
+    }
+    
+    footer a:hover {
+      opacity: 0.8;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hero .subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .timeline {
+        padding-left: 1rem;
+      }
+    }
+    
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Your Name</h1>
-    <p>Data Science | Machine Learning | Data Analysis</p>
-    <p><a href="https://www.linkedin.com/in/saehee-eom-99b1581b3/" target="_blank">LinkedIn</a> | 
-       <a href="https://github.com/saeheeeom" target="_blank">GitHub</a> | 
-       <a href="saehee.data@gmail.com">Email</a></p>
-  </header>
+  <nav>
+    <div class="container">
+      <div class="logo">Saehee Eom</div>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#publications">Publications</a></li>
+      </ul>
+    </div>
+  </nav>
 
-  <section>
-    <h2>About Me</h2>
-    <p>Hello! My name is Saehee [Say-Hee] and I'm an aspiring data scientist.
-      I am in my first year of my Master of Science in Analytics (Computational Data Analytics) at Georgia Tech, 
-      and prior to my masters I have worked as a Data Analyst at Salesforce and LBOX.
+  <div class="hero">
+    <h1>Saehee Eom</h1>
+    <p class="subtitle">Data Scientist & NLP Researcher</p>
+    <p class="description">
+      Bridging research and industry with expertise in machine learning, natural language processing, and scalable data systems. 
+      Currently pursuing MS in Analytics at Georgia Tech.
     </p>
+    <div class="links">
+      <a href="mailto:seom@gatech.edu">Email</a>
+      <a href="https://www.linkedin.com/in/saehee-eom/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/saeheeeom" target="_blank">GitHub</a>
+      <a href="#" target="_blank">Resume</a>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <p>
+          Hello! I'm Saehee [Say-Hee], a data scientist with a unique background spanning both academic research and industry applications. 
+          I hold degrees in Artificial Intelligence and Linguistics from Seoul National University, and I'm currently pursuing my 
+          Master of Science in Analytics (Data Science) at Georgia Tech.
+        </p>
+        <p>
+          My journey combines the rigor of peer-reviewed NLP research with hands-on experience building production ML systems 
+          at companies like Salesforce and LBOX. I specialize in the intersection of natural language processing, machine learning 
+          engineering, and data-driven decision making, with a track record of delivering measurable business impact.
+        </p>
+        <p>
+          What excites me most is translating complex technical solutions into real-world value—whether that's improving model 
+          fluency by 23%, reducing manual reporting effort by 90%, or driving 161% sales growth through data-driven insights.
+        </p>
+      </div>
+      
+      <div class="highlights">
+        <div class="highlight">
+          <div class="number">2</div>
+          <div class="label">Published Papers</div>
+        </div>
+        <div class="highlight">
+          <div class="number">3</div>
+          <div class="label">Industry Roles</div>
+        </div>
+        <div class="highlight">
+          <div class="number">90%</div>
+          <div class="label">Efficiency Gains</div>
+        </div>
+        <div class="highlight">
+          <div class="number">50+</div>
+          <div class="label">Industries Analyzed</div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>Projects</h2>
-    <div class="project">
-      <h3>📈 Time Series Forecasting</h3>
-      <p>Built forecasting models using LSTM and gradient boosting for energy demand prediction.</p>
-      <a href="https://github.com/username/timeseries-project">View on GitHub</a>
-    </div>
-    <div class="project">
-      <h3>☁️ Cloud ML Pipeline</h3>
-      <p>Deployed ML models on AWS SageMaker with CI/CD pipelines and Docker for scalability.</p>
-      <a href="https://github.com/username/cloud-ml-pipeline">View on GitHub</a>
+  <section id="projects" style="background: white;">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+        
+        <div class="project-card">
+          <div class="icon">🔍</div>
+          <h3>Hybrid Vector Search System</h3>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">FAISS</span>
+            <span class="tag">SQL</span>
+            <span class="tag">IVF-PQ</span>
+          </div>
+          <p>
+            Designed and implemented a hybrid search engine combining structured SQL queries with vector similarity search, 
+            enabling both ANN-based retrieval and relational filtering on large-scale text corpora.
+          </p>
+          <div class="metrics">
+            <strong>Key Achievement:</strong> Adaptive query strategies that dynamically tune search scope based on filter selectivity, 
+            reducing latency while preserving retrieval accuracy
+          </div>
+          <a href="#">View Project →</a>
+        </div>
+
+        <div class="project-card">
+          <div class="icon">✍️</div>
+          <h3>Controlled Text Generation</h3>
+          <div class="tags">
+            <span class="tag">PyTorch</span>
+            <span class="tag">LLMs</span>
+            <span class="tag">NLP</span>
+            <span class="tag">Research</span>
+          </div>
+          <p>
+            Co-authored research paper on energy model-based controlled text generation, handling multiple constraints 
+            including toxicity, logical consistency, and formality across various LLMs.
+          </p>
+          <div class="metrics">
+            <strong>Results:</strong> +23% BERTScore fluency improvement, -22% perplexity reduction across LLaMA, Phi, and Qwen models
+          </div>
+          <a href="#">View Paper →</a>
+        </div>
+
+        <div class="project-card">
+          <div class="icon">⚖️</div>
+          <h3>Legal Analytics Platform</h3>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">NLP</span>
+            <span class="tag">IE</span>
+          </div>
+          <p>
+            Drove end-to-end development of South Korea's first legal data analytics platform, visualizing sentencing patterns 
+            and enhancing accessibility for non-expert users.
+          </p>
+          <div class="metrics">
+            <strong>Impact:</strong> 4x higher user engagement from non-legal professionals, published at EMNLP 2022 Workshop
+          </div>
+          <a href="#">View Details →</a>
+        </div>
+
+        <div class="project-card">
+          <div class="icon">🗄️</div>
+          <h3>SQL Database Engine & Recommender</h3>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">SQLite</span>
+            <span class="tag">CF</span>
+            <span class="tag">Lark</span>
+          </div>
+          <p>
+            Implemented a SQL database engine from scratch with Lark-based parser, supporting DDL/DML operations. 
+            Integrated collaborative filtering for book recommendations.
+          </p>
+          <div class="metrics">
+            <strong>Performance:</strong> <1s execution on 100K+ rows, +18% Precision@10 vs baseline
+          </div>
+          <a href="#">View Code →</a>
+        </div>
+
+        <div class="project-card">
+          <div class="icon">🎯</div>
+          <h3>CRM Targeting Ensemble</h3>
+          <div class="tags">
+            <span class="tag">LightGBM</span>
+            <span class="tag">SASRec</span>
+            <span class="tag">AWS</span>
+            <span class="tag">RFM</span>
+          </div>
+          <p>
+            Built ensemble model combining gradient boosting and sequential recommendation to optimize customer targeting 
+            for marketing campaigns. Deployed on AWS for real-time predictions.
+          </p>
+          <div class="metrics">
+            <strong>Business Impact:</strong> 42% boost in purchase rate, 14% campaign engagement lift
+          </div>
+          <a href="#">View Project →</a>
+        </div>
+
+        <div class="project-card">
+          <div class="icon">📞</div>
+          <h3>Call Volume Forecasting</h3>
+          <div class="tags">
+            <span class="tag">CatBoost</span>
+            <span class="tag">LSTM</span>
+            <span class="tag">Streamlit</span>
+            <span class="tag">Time Series</span>
+          </div>
+          <p>
+            Forecasted call center volume using hybrid CatBoost and LSTM approach, enabling managers to optimize 
+            workforce allocation and reduce operational costs.
+          </p>
+          <div class="metrics">
+            <strong>Accuracy:</strong> MAE < 100, 29% lower monthly error vs baseline
+          </div>
+          <a href="#">View Demo →</a>
+        </div>
+
+      </div>
     </div>
   </section>
 
-  <section>
-    <h2>Blog</h2>
-    <p>Coming soon... (AI, Cloud, and Data Science notes!)</p>
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline">
+        
+        <div class="timeline-item">
+          <div class="company">Salesforce</div>
+          <div class="role">Data Scientist Intern</div>
+          <div class="period">Jan 2025 - Jun 2025 | Seoul, South Korea</div>
+          <ul>
+            <li>Engineered automated ETL pipelines integrating Snowflake, Tableau Prep, and RBAC systems, reducing manual effort by 90%</li>
+            <li>Designed scoring algorithm and recommender system to predict product purchase likelihood, informing GTM strategy across 50+ industries</li>
+            <li>Collaborated with global stakeholders (Korea, USA, Japan) to unify data definitions and ensure consistent analytics</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="company">SNU SKI-ML Lab</div>
+          <div class="role">Research Intern (NLP)</div>
+          <div class="period">Jun 2024 - Jan 2025 | Seoul, South Korea</div>
+          <ul>
+            <li>Co-authored paper on Controlled Text Generation, improving fluency (+23% BERTScore) and reducing perplexity (-22%)</li>
+            <li>Created scalable evaluation framework for benchmarking LLM outputs across multiple models and constraints</li>
+            <li>Shared reproducible research implementations on GitHub for team collaboration</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="company">LBOX (Series C LegalTech)</div>
+          <div class="role">Data Scientist Intern</div>
+          <div class="period">Jul 2022 - Jan 2023 | Seoul, South Korea</div>
+          <ul>
+            <li>Built 200+ SQL dashboards and user engagement analytics, driving 161% sales growth</li>
+            <li>Developed South Korea's first legal data analytics platform with 4x higher engagement from non-experts</li>
+            <li>Co-authored EMNLP 2022 workshop paper on Information Extraction for legal documents</li>
+            <li>Standardized company-wide data dictionary and event taxonomy, increasing analytics trust across teams</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="company">Growth Hackers (SNU Data Science Club)</div>
+          <div class="role">Data Science Project Lead</div>
+          <div class="period">Jul 2021 - Jun 2022 | Seoul, South Korea</div>
+          <ul>
+            <li>Led compensated, industry-sponsored data science consulting projects</li>
+            <li>Delivered CRM targeting and call center forecasting solutions with measurable business impact</li>
+            <li>Collaborated with cross-functional teams to translate technical solutions into business value</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" style="background: white;">
+    <div class="container">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-grid">
+        
+        <div class="skill-category">
+          <h3><span class="icon">💻</span> Programming & ML</h3>
+          <div class="skill-list">
+            <span class="skill-item">Python</span>
+            <span class="skill-item">PyTorch</span>
+            <span class="skill-item">TensorFlow</span>
+            <span class="skill-item">Scikit-Learn</span>
+            <span class="skill-item">PySpark</span>
+            <span class="skill-item">Java</span>
+            <span class="skill-item">R</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3><span class="icon">🗄️</span> Data Systems</h3>
+          <div class="skill-list">
+            <span class="skill-item">SQL</span>
+            <span class="skill-item">BigQuery</span>
+            <span class="skill-item">MySQL</span>
+            <span class="skill-item">SQLite</span>
+            <span class="skill-item">Spark</span>
+            <span class="skill-item">Hadoop</span>
+            <span class="skill-item">Snowflake</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3><span class="icon">🤖</span> NLP & LLMs</h3>
+          <div class="skill-list">
+            <span class="skill-item">Hugging Face</span>
+            <span class="skill-item">LangChain</span>
+            <span class="skill-item">OpenAI API</span>
+            <span class="skill-item">NLTK</span>
+            <span class="skill-item">Transformers</span>
+            <span class="skill-item">FAISS</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3><span class="icon">☁️</span> Cloud & Tools</h3>
+          <div class="skill-list">
+            <span class="skill-item">AWS</span>
+            <span class="skill-item">GCP</span>
+            <span class="skill-item">Tableau</span>
+            <span class="skill-item">Git</span>
+            <span class="skill-item">Docker</span>
+            <span class="skill-item">Streamlit</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="container">
+      <h2 class="section-title">Publications</h2>
+      <div class="publications">
+        
+        <div class="publication">
+          <h3>Locate & Edit: Text Editing-Based Controlled Text Generation for Black-Box LMs</h3>
+          <p class="authors">H. R. Son, Saehee Eom, et al.</p>
+          <p class="venue">July 2025</p>
+          <p>
+            Proposed an energy model-based approach for controlled text generation that handles multiple constraints 
+            simultaneously (toxicity, logical consistency, formality) while maintaining text fluency and content preservation. 
+            Achieved significant improvements in BERTScore (+23%) and perplexity (-22%) across multiple LLM architectures.
+          </p>
+        </div>
+
+        <div class="publication">
+          <h3>Data-efficient End-to-end Information Extraction for Statistical Legal Analysis</h3>
+          <p class="authors">W. Hwang, Saehee Eom, et al.</p>
+          <p class="venue">EMNLP 2022 Workshop (NLLP) | December 2022</p>
+          <p>
+            Presented a data-efficient approach to information extraction from legal documents, including novel legal ontologies, 
+            baseline models, and evaluation frameworks. Work contributed to the development of South Korea's first legal analytics platform.
+          </p>
+        </div>
+
+      </div>
+    </div>
   </section>
 
   <footer>
-    <p>© 2025 Your Name</p>
+    <div class="container">
+      <p style="margin-bottom: 1rem;">Let's connect and collaborate!</p>
+      <div>
+        <a href="mailto:seom@gatech.edu">seom@gatech.edu</a>
+        <a href="https://www.linkedin.com/in/saehee-eom/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/saeheeeom" target="_blank">GitHub</a>
+      </div>
+      <p style="margin-top: 2rem; opacity: 0.7;">© 2025 Saehee Eom. All rights reserved.</p>
+    </div>
   </footer>
-</body>
-</html>
+
+  <script>
+    // Smooth scroll for navigation
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        const navHeight = document.querySelector('nav').offsetHeight;
+        const targetPosition = target.offsetTop - navHeight;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Add active state to nav on scroll
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section

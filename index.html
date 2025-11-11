@@ -518,7 +518,7 @@
       <a href="mailto:seom@gatech.edu">Email</a>
       <a href="https://www.linkedin.com/in/saehee-eom/" target="_blank">LinkedIn</a>
       <a href="https://github.com/saeheeeom" target="_blank">GitHub</a>
-      <a href="https://github.com/saeheeeom/saeheeeom.github.io/blob/main/SaeheeEom_Resume_QR.pdf" target="_blank">Resume</a>
+      <a href="#" target="_blank">Resume</a>
     </div>
   </div>
 
@@ -527,24 +527,25 @@
       <h2 class="section-title">About Me</h2>
       <div class="about-content">
         <p>
-          Hello! I'm Saehee [Say-Hee], a data scientist with a unique background spanning both academic research and industry applications. 
-          I hold degrees in Artificial Intelligence and Linguistics from Seoul National University, and I'm currently pursuing my 
-          Master of Science in Analytics (Data Science) at Georgia Tech.
+          Hello! I'm Saehee [Say-Hee], a data scientist and researcher bridging the gap between cutting-edge AI research and impactful industry applications. 
+          With dual degrees in Artificial Intelligence and Linguistics from Seoul National University, I'm currently pursuing my Master of Science in 
+          Analytics (Data Science) at Georgia Tech, deepening my expertise in machine learning systems and data engineering.
         </p>
         <p>
-          My journey combines the rigor of peer-reviewed NLP research with hands-on experience building production ML systems 
-          at companies like Salesforce and LBOX. I specialize in the intersection of natural language processing, machine learning 
-          engineering, and data-driven decision making, with a track record of delivering measurable business impact.
+          My unique journey spans <strong>three research experiences</strong> (NLP at SNU SKI-ML Lab, Computer Vision at SNU MIPA Lab, and published work at LBOX) 
+          and <strong>production ML deployments</strong> at enterprise companies like Salesforce. I specialize in natural language processing, computer vision, 
+          and scalable data systems—with peer-reviewed publications demonstrating research rigor and measurable business metrics proving real-world impact.
         </p>
         <p>
-          What excites me most is translating complex technical solutions into real-world value—whether that's improving model 
-          fluency by 23%, reducing manual reporting effort by 90%, or driving 161% sales growth through data-driven insights.
+          What drives me is the art of translating complex technical innovation into tangible value: improving NLP model fluency by 23%, 
+          defending against deepfake misuse through adversarial techniques, reducing manual reporting by 90%, driving 161% sales growth through analytics, 
+          and winning 2nd place among 40 teams in computer vision competitions. I thrive at the intersection of research excellence and practical deployment.
         </p>
       </div>
       
       <div class="highlights">
         <div class="highlight">
-          <div class="number">2</div>
+          <div class="number">3</div>
           <div class="label">Published Papers</div>
         </div>
         <div class="highlight">
@@ -568,6 +569,63 @@
       <h2 class="section-title">Featured Projects</h2>
       <div class="projects-grid">
         
+        <div class="project-card">
+          <div class="icon">🛡️</div>
+          <h3>GuardianDream: Adversarial Defense</h3>
+          <div class="tags">
+            <span class="tag">PyTorch</span>
+            <span class="tag">Diffusion Models</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Research</span>
+          </div>
+          <p>
+            Developed adversarial defense system against diffusion-based deepfakes by injecting imperceptible noise into training photos, 
+            protecting against identity misuse and unauthorized AI-generated content.
+          </p>
+          <div class="metrics">
+            <strong>Impact:</strong> -2% generated image quality, -3% facial similarity degradation, effectively hindering deepfake creation
+          </div>
+          <a href="#">View Research →</a>
+        </div>
+
+        <div class="project-card">
+          <div class="icon">🚗</div>
+          <h3>Korean License Plate Detection</h3>
+          <div class="tags">
+            <span class="tag">Faster R-CNN</span>
+            <span class="tag">EasyOCR</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Award</span>
+          </div>
+          <p>
+            Built two-stage detection pipeline combining object detection and OCR for intelligent transportation systems. 
+            Won 2nd place out of 40 teams in competition.
+          </p>
+          <div class="metrics">
+            <strong>Performance:</strong> 87.60% OCR accuracy, 0.72 mean IoU, 81% end-to-end detection success on real-world data (87/107 images)
+          </div>
+          <a href="#">View Project →</a>
+        </div>
+
+        <div class="project-card">
+          <div class="icon">🚦</div>
+          <h3>Atlanta Traffic Visualization Dashboard</h3>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Leaflet.js</span>
+            <span class="tag">Time Series</span>
+            <span class="tag">Data Viz</span>
+          </div>
+          <p>
+            Built interactive web-based traffic visualization dashboard processing 330,000+ records across Atlanta's I-285. 
+            Features real-time weather integration, animated temporal playback, and compressed data delivery for instant loading.
+          </p>
+          <div class="metrics">
+            <strong>Performance:</strong> 80-85% data compression (33MB → 8MB), 1-3s initial load, handles 16 GDOT sensor sites with hourly granularity
+          </div>
+          <a href="#">View Dashboard →</a>
+        </div>
+
         <div class="project-card">
           <div class="icon">🔍</div>
           <h3>Hybrid Vector Search System</h3>
@@ -704,6 +762,17 @@
         </div>
 
         <div class="timeline-item">
+          <div class="company">SNU MIPA Lab</div>
+          <div class="role">Research Intern (Computer Vision)</div>
+          <div class="period">Jan 2024 - Feb 2024 | Seoul, South Korea</div>
+          <ul>
+            <li>Developed GuardianDream, an adversarial defense against diffusion-based deepfakes by injecting subtle noise into training photos</li>
+            <li>Achieved measurable protection metrics: -2% generated image quality and -3% facial similarity degradation to hinder identity misuse</li>
+            <li>Led journal club sessions on cutting-edge generative AI: GANs, Diffusion Models, Vision-Language Models, LoRA, and SOTA methodologies</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
           <div class="company">SNU SKI-ML Lab</div>
           <div class="role">Research Intern (NLP)</div>
           <div class="period">Jun 2024 - Jan 2025 | Seoul, South Korea</div>
@@ -805,6 +874,17 @@
       <h2 class="section-title">Publications</h2>
       <div class="publications">
         
+        <div class="publication">
+          <h3>GuardianDream: Adversarial Defense Against Diffusion-based Deepfake Generation</h3>
+          <p class="authors">Saehee Eom, et al.</p>
+          <p class="venue">In Preparation | 2024</p>
+          <p>
+            Developed a novel adversarial defense mechanism that protects personal photos from unauthorized deepfake generation. 
+            By injecting imperceptible perturbations into training images, the system degrades the quality and facial similarity 
+            of diffusion model outputs, effectively hindering identity misuse while maintaining original image quality for legitimate use.
+          </p>
+        </div>
+
         <div class="publication">
           <h3>Locate & Edit: Text Editing-Based Controlled Text Generation for Black-Box LMs</h3>
           <p class="authors">H. R. Son, Saehee Eom, et al.</p>

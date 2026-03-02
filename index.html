@@ -7,43 +7,44 @@
   <link rel="manifest" href="/site.webmanifest">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Saehee Eom | Data Scientist & NLP Researcher</title>
+  <title>Saehee Eom | ML Researcher & AI Engineer</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     :root {
-      --primary: #2563eb;
-      --primary-dark: #1e40af;
-      --secondary: #64748b;
-      --dark: #0f172a;
-      --light: #f8fafc;
-      --border: #e2e8f0;
-      --shadow: rgba(0, 0, 0, 0.1);
+      --primary: #c2614a;
+      --primary-dark: #a04a36;
+      --secondary: #6b6560;
+      --dark: #1c1917;
+      --light: #fdf8f5;
+      --border: #e7ddd8;
+      --shadow: rgba(139, 80, 50, 0.12);
+      --accent: #e8904e;
     }
-    
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
       line-height: 1.6;
       color: var(--dark);
       background: var(--light);
     }
-    
+
     /* Navigation */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(253, 248, 245, 0.96);
       backdrop-filter: blur(10px);
       box-shadow: 0 2px 10px var(--shadow);
       z-index: 1000;
       padding: 1rem 0;
     }
-    
+
     nav .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -52,52 +53,58 @@
       justify-content: space-between;
       align-items: center;
     }
-    
+
     nav .logo {
       font-size: 1.25rem;
       font-weight: 700;
       color: var(--dark);
+      transition: color 0.3s;
     }
-    
+
+    nav .logo:hover {
+      color: var(--primary);
+    }
+
     nav ul {
       display: flex;
       list-style: none;
       gap: 2rem;
     }
-    
+
     nav a {
       color: var(--secondary);
       text-decoration: none;
       transition: color 0.3s;
       font-weight: 500;
     }
-    
-    nav a:hover {
+
+    nav a:hover,
+    nav a.active {
       color: var(--primary);
     }
-    
+
     /* Hero Section */
     .hero {
       margin-top: 80px;
       padding: 6rem 2rem;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #e8845c 0%, #c2614a 60%, #8b3a27 100%);
       color: white;
       text-align: center;
     }
-    
+
     .hero h1 {
       font-size: 3rem;
       margin-bottom: 1rem;
       animation: fadeInUp 0.8s ease;
     }
-    
+
     .hero .subtitle {
       font-size: 1.5rem;
       margin-bottom: 1rem;
       opacity: 0.95;
       animation: fadeInUp 0.8s ease 0.2s backwards;
     }
-    
+
     .hero .description {
       font-size: 1.1rem;
       max-width: 700px;
@@ -105,7 +112,7 @@
       opacity: 0.9;
       animation: fadeInUp 0.8s ease 0.4s backwards;
     }
-    
+
     .hero .links {
       display: flex;
       gap: 1.5rem;
@@ -113,7 +120,7 @@
       flex-wrap: wrap;
       animation: fadeInUp 0.8s ease 0.6s backwards;
     }
-    
+
     .hero .links a {
       color: white;
       text-decoration: none;
@@ -123,12 +130,12 @@
       transition: all 0.3s;
       font-weight: 500;
     }
-    
+
     .hero .links a:hover {
       background: white;
-      color: var(--primary);
+      color: var(--primary-dark);
     }
-    
+
     @keyframes fadeInUp {
       from {
         opacity: 0;
@@ -139,18 +146,30 @@
         transform: translateY(0);
       }
     }
-    
+
+    /* Scroll Fade-in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* Container */
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
     }
-    
+
     section {
       padding: 5rem 0;
     }
-    
+
     .section-title {
       font-size: 2.5rem;
       margin-bottom: 3rem;
@@ -158,7 +177,7 @@
       color: var(--dark);
       position: relative;
     }
-    
+
     .section-title::after {
       content: '';
       display: block;
@@ -168,7 +187,7 @@
       margin: 1rem auto 0;
       border-radius: 2px;
     }
-    
+
     /* About Section */
     .about-content {
       max-width: 800px;
@@ -176,50 +195,85 @@
       font-size: 1.1rem;
       line-height: 1.8;
     }
-    
+
     .about-content p {
       margin-bottom: 1.5rem;
     }
-    
+
     .highlights {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 2rem;
       margin-top: 3rem;
     }
-    
+
     .highlight {
       text-align: center;
-      padding: 1.5rem;
+      padding: 1.75rem 1.5rem;
       background: white;
       border-radius: 12px;
       box-shadow: 0 4px 6px var(--shadow);
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-bottom: 3px solid var(--accent);
     }
-    
+
     .highlight:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px var(--shadow);
     }
-    
+
     .highlight .number {
       font-size: 2.5rem;
       font-weight: 700;
       color: var(--primary);
       margin-bottom: 0.5rem;
     }
-    
+
     .highlight .label {
       color: var(--secondary);
       font-size: 0.9rem;
     }
-    
+
+    /* Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1.25rem;
+      border: 2px solid var(--border);
+      background: white;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s;
+      color: var(--secondary);
+      font-family: inherit;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .filter-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+
     /* Projects Grid */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
       gap: 2rem;
     }
-    
+
     .project-card {
       background: white;
       border-radius: 12px;
@@ -228,30 +282,34 @@
       transition: all 0.3s;
       border-top: 4px solid var(--primary);
     }
-    
+
     .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 15px var(--shadow);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(194, 97, 74, 0.18);
     }
-    
+
+    .project-card.hidden {
+      display: none;
+    }
+
     .project-card .icon {
       font-size: 2.5rem;
       margin-bottom: 1rem;
     }
-    
+
     .project-card h3 {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       margin-bottom: 1rem;
       color: var(--dark);
     }
-    
+
     .project-card .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
       margin-bottom: 1rem;
     }
-    
+
     .tag {
       background: var(--light);
       color: var(--primary);
@@ -259,23 +317,25 @@
       border-radius: 20px;
       font-size: 0.85rem;
       font-weight: 500;
+      border: 1px solid var(--border);
     }
-    
+
     .project-card p {
       color: var(--secondary);
       margin-bottom: 1rem;
       line-height: 1.6;
     }
-    
+
     .project-card .metrics {
-      background: #f0f9ff;
+      background: #fff5f0;
       padding: 1rem;
       border-radius: 8px;
       margin-bottom: 1rem;
       font-size: 0.9rem;
       color: var(--dark);
+      border-left: 3px solid var(--accent);
     }
-    
+
     .project-card a {
       color: var(--primary);
       text-decoration: none;
@@ -285,11 +345,11 @@
       gap: 0.5rem;
       transition: gap 0.3s;
     }
-    
+
     .project-card a:hover {
       gap: 0.75rem;
     }
-    
+
     /* Experience Timeline */
     .timeline {
       max-width: 900px;
@@ -297,7 +357,7 @@
       position: relative;
       padding-left: 2rem;
     }
-    
+
     .timeline::before {
       content: '';
       position: absolute;
@@ -307,13 +367,13 @@
       width: 2px;
       background: var(--border);
     }
-    
+
     .timeline-item {
       position: relative;
       margin-bottom: 3rem;
       padding-left: 2rem;
     }
-    
+
     .timeline-item::before {
       content: '';
       position: absolute;
@@ -323,96 +383,113 @@
       height: 12px;
       border-radius: 50%;
       background: var(--primary);
-      border: 3px solid white;
+      border: 3px solid var(--light);
       box-shadow: 0 0 0 3px var(--primary);
     }
-    
+
     .timeline-item .company {
       font-size: 1.5rem;
       font-weight: 700;
       color: var(--dark);
       margin-bottom: 0.25rem;
     }
-    
+
     .timeline-item .role {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: var(--primary);
       margin-bottom: 0.5rem;
+      font-weight: 600;
     }
-    
+
     .timeline-item .period {
       color: var(--secondary);
       font-size: 0.9rem;
       margin-bottom: 1rem;
     }
-    
+
     .timeline-item ul {
       list-style: none;
       padding-left: 0;
     }
-    
+
     .timeline-item li {
       margin-bottom: 0.75rem;
       padding-left: 1.5rem;
       position: relative;
       color: var(--secondary);
     }
-    
+
     .timeline-item li::before {
       content: '▸';
       position: absolute;
       left: 0;
       color: var(--primary);
     }
-    
+
     /* Skills */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 2rem;
     }
-    
+
     .skill-category {
       background: white;
       padding: 2rem;
       border-radius: 12px;
       box-shadow: 0 4px 6px var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-    
+
+    .skill-category:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px var(--shadow);
+    }
+
     .skill-category h3 {
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       color: var(--dark);
       margin-bottom: 1rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--border);
     }
-    
+
     .skill-category .icon {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
     }
-    
+
     .skill-list {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
     }
-    
+
     .skill-item {
       background: var(--light);
-      padding: 0.5rem 1rem;
+      padding: 0.4rem 0.85rem;
       border-radius: 8px;
-      font-size: 0.9rem;
+      font-size: 0.875rem;
       color: var(--dark);
       border: 1px solid var(--border);
+      transition: all 0.2s;
     }
-    
+
+    .skill-item:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: scale(1.05);
+    }
+
     /* Publications */
     .publications {
       max-width: 900px;
       margin: 0 auto;
     }
-    
+
     .publication {
       background: white;
       padding: 2rem;
@@ -420,26 +497,32 @@
       box-shadow: 0 4px 6px var(--shadow);
       margin-bottom: 2rem;
       border-left: 4px solid var(--primary);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-    
+
+    .publication:hover {
+      transform: translateX(4px);
+      box-shadow: 0 6px 18px var(--shadow);
+    }
+
     .publication h3 {
       font-size: 1.25rem;
       color: var(--dark);
       margin-bottom: 0.5rem;
     }
-    
+
     .publication .authors {
       color: var(--secondary);
       font-style: italic;
       margin-bottom: 0.5rem;
     }
-    
+
     .publication .venue {
       color: var(--primary);
       font-weight: 600;
       margin-bottom: 1rem;
     }
-    
+
     /* Footer */
     footer {
       background: var(--dark);
@@ -447,46 +530,46 @@
       padding: 3rem 2rem;
       text-align: center;
     }
-    
+
     footer a {
       color: white;
       text-decoration: none;
       margin: 0 1rem;
       transition: opacity 0.3s;
     }
-    
+
     footer a:hover {
       opacity: 0.8;
     }
-    
+
     /* Responsive */
     @media (max-width: 768px) {
       nav ul {
         gap: 1rem;
         font-size: 0.9rem;
       }
-      
+
       .hero h1 {
         font-size: 2rem;
       }
-      
+
       .hero .subtitle {
         font-size: 1.2rem;
       }
-      
+
       .section-title {
         font-size: 2rem;
       }
-      
+
       .projects-grid {
         grid-template-columns: 1fr;
       }
-      
+
       .timeline {
         padding-left: 1rem;
       }
     }
-    
+
     /* Smooth Scroll */
     html {
       scroll-behavior: smooth;
@@ -509,10 +592,10 @@
 
   <div class="hero">
     <h1>Saehee Eom</h1>
-    <p class="subtitle">Data Scientist & NLP Researcher</p>
+    <p class="subtitle">ML Researcher & AI Engineer</p>
     <p class="description">
-      Bridging research and industry with expertise in machine learning, natural language processing, and scalable data systems. 
-      Currently pursuing MS in Analytics at Georgia Tech.
+      Building intelligent systems at the frontier of LLM research, agentic AI, and machine learning.
+      Currently pursuing MS in Analytics at Georgia Tech, with research spanning NLP, computer vision, and multimodal AI.
     </p>
     <div class="links">
       <a href="mailto:seom@gatech.edu">Email</a>
@@ -527,38 +610,40 @@
       <h2 class="section-title">About Me</h2>
       <div class="about-content">
         <p>
-          Hello! I'm Saehee [Say-Hee], a data scientist and researcher bridging the gap between cutting-edge AI research and impactful industry applications. 
-          With dual degrees in Artificial Intelligence and Linguistics from Seoul National University, I'm currently pursuing my Master of Science in 
-          Analytics (Data Science) at Georgia Tech, deepening my expertise in machine learning systems and data engineering.
+          Hello! I'm Saehee [Say-Hee], an ML researcher and AI engineer passionate about advancing the frontiers of
+          large language models and agentic AI systems. With dual degrees in Artificial Intelligence and Linguistics
+          from Seoul National University, I'm currently pursuing my MS in Analytics at Georgia Tech — where I'm also
+          conducting LLM training data attribution research at the EI-Lab under Prof. Mark Riedl.
         </p>
         <p>
-          My unique journey spans <strong>three research experiences</strong> (NLP at SNU SKI-ML Lab, Computer Vision at SNU MIPA Lab, and published work at LBOX) 
-          and <strong>production ML deployments</strong> at enterprise companies like Salesforce. I specialize in natural language processing, computer vision, 
-          and scalable data systems—with peer-reviewed publications demonstrating research rigor and measurable business metrics proving real-world impact.
+          My work spans <strong>four research experiences</strong> — NLP at SNU SKI-ML Lab, Computer Vision at SNU MIPA Lab,
+          Legal AI at LBOX, and LLM pre-training research at GT EI-Lab — alongside <strong>production ML deployments</strong> at
+          enterprise companies like Salesforce. I'm building toward a research career at the intersection of LLM development,
+          agentic workflows, and multimodal AI systems.
         </p>
         <p>
-          What drives me is the art of translating complex technical innovation into tangible value: improving NLP model fluency by 23%, 
-          defending against deepfake misuse through adversarial techniques, reducing manual reporting by 90%, driving 161% sales growth through analytics, 
-          and winning 2nd place among 40 teams in computer vision competitions. I thrive at the intersection of research excellence and practical deployment.
+          From improving LLM fluency by 23% via controlled text generation, to curating ~5B-token training corpora for
+          LLM pre-training, to building adversarial defenses against deepfakes — I bridge rigorous research with
+          deployable ML systems. I thrive where scientific depth meets real-world impact.
         </p>
       </div>
-      
+
       <div class="highlights">
-        <div class="highlight">
-          <div class="number">3</div>
+        <div class="highlight fade-in">
+          <div class="number" data-count="3" data-suffix="">3</div>
           <div class="label">Published Papers</div>
         </div>
-        <div class="highlight">
-          <div class="number">2</div>
-          <div class="label">Industry Roles</div>
+        <div class="highlight fade-in">
+          <div class="number" data-count="4" data-suffix="">4</div>
+          <div class="label">Research Experiences</div>
         </div>
-        <div class="highlight">
-          <div class="number">90%</div>
-          <div class="label">Efficiency Gains</div>
+        <div class="highlight fade-in">
+          <div class="number" data-count="90" data-suffix="%">90%</div>
+          <div class="label">Efficiency Gained</div>
         </div>
-        <div class="highlight">
-          <div class="number">50+</div>
-          <div class="label">Industries Analyzed</div>
+        <div class="highlight fade-in">
+          <div class="number">~5B</div>
+          <div class="label">Tokens Curated</div>
         </div>
       </div>
     </div>
@@ -567,9 +652,37 @@
   <section id="projects" style="background: white;">
     <div class="container">
       <h2 class="section-title">Featured Projects</h2>
+
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="ai-research">AI Research</button>
+        <button class="filter-btn" data-filter="ml-systems">ML Systems</button>
+        <button class="filter-btn" data-filter="data-engineering">Data Engineering</button>
+      </div>
+
       <div class="projects-grid">
-        
-        <div class="project-card">
+
+        <div class="project-card fade-in" data-category="ai-research">
+          <div class="icon">🤖</div>
+          <h3>Agentic Multimodal Monitoring for Mental Health</h3>
+          <div class="tags">
+            <span class="tag">Agentic AI</span>
+            <span class="tag">Multimodal</span>
+            <span class="tag">LLMs</span>
+            <span class="tag">Emotion AI</span>
+            <span class="tag">Ongoing</span>
+          </div>
+          <p>
+            Agentic AI framework with autonomous agents orchestrating multimodal data collection (audio, facial,
+            behavioral signals), feature extraction, and LLM-based clinical reasoning for continuous mental health monitoring.
+          </p>
+          <div class="metrics">
+            <strong>Focus:</strong> Emotion AI + multimodal time series + autonomous agent coordination · GT Sonification Lab
+          </div>
+          <a href="#">Research in Progress →</a>
+        </div>
+
+        <div class="project-card fade-in" data-category="ai-research">
           <div class="icon">✍️</div>
           <h3>Controlled Text Generation</h3>
           <div class="tags">
@@ -579,35 +692,35 @@
             <span class="tag">Research</span>
           </div>
           <p>
-            Co-authored research paper on energy model-based controlled text generation, handling multiple constraints 
-            including toxicity, logical consistency, and formality across various LLMs.
+            Co-authored research on energy model-based controlled text generation for black-box LLMs, handling multiple
+            constraints (toxicity, logical consistency, formality) simultaneously while preserving fluency.
           </p>
           <div class="metrics">
-            <strong>Results:</strong> +23% BERTScore fluency improvement, -22% perplexity reduction across LLaMA, Phi, and Qwen models
+            <strong>Results:</strong> +23% BERTScore fluency, -22% perplexity across LLaMA, Phi, and Qwen · +31% constraint satisfaction via SFT fine-tuning
           </div>
-          <a href="L&E.pdf">Paper Under Revision. View Overview</a>
+          <a href="L&E.pdf">Paper Under Revision. View Overview →</a>
         </div>
 
-        <div class="project-card">
+        <div class="project-card fade-in" data-category="ai-research">
           <div class="icon">🧠</div>
           <h3>Syntactic Complexity & LLM Performance</h3>
           <div class="tags">
             <span class="tag">Linguistics</span>
-            <span class="tag">Large Language Models</span>
+            <span class="tag">LLMs</span>
             <span class="tag">Prompt Engineering</span>
             <span class="tag">Research</span>
           </div>
           <p>
-            Bridged linguistics and LLM research by quantifying the effects of syntactic complexity on model performance, 
-            revealing POS divergence as a key bottleneck and demonstrating the role of prompt engineering.
+            Quantified the effects of syntactic complexity on LLM performance across QA, text completion, and EN–KO
+            translation. Identified POS divergence as a key bottleneck; demonstrated prompt strategies to mitigate degradation.
           </p>
           <div class="metrics">
-            <strong>Tasks:</strong> QA, text completion, EN–KO translation · correlation analysis with 8 syntactic metrics
+            <strong>Tasks:</strong> QA, text completion, EN–KO translation · 8 syntactic complexity metrics · in-context learning & kNN selection
           </div>
           <a href="LingThesis.pdf">View Paper →</a>
         </div>
 
-        <div class="project-card">
+        <div class="project-card fade-in" data-category="ai-research">
           <div class="icon">🛡️</div>
           <h3>GuardianDream: Adversarial Defense</h3>
           <div class="tags">
@@ -617,8 +730,8 @@
             <span class="tag">Research</span>
           </div>
           <p>
-            Developed adversarial defense system against diffusion-based deepfakes by injecting imperceptible noise into training photos, 
-            protecting against identity misuse and unauthorized AI-generated content.
+            Adversarial defense system against diffusion-based deepfakes — injects imperceptible noise into training
+            photos to degrade unauthorized AI-generated identity recreation.
           </p>
           <div class="metrics">
             <strong>Impact:</strong> -2% generated image quality, -3% facial similarity degradation, effectively hindering deepfake creation
@@ -626,7 +739,7 @@
           <a href="GuardianDream.pdf">View Research →</a>
         </div>
 
-        <div class="project-card">
+        <div class="project-card fade-in" data-category="ai-research">
           <div class="icon">🚗</div>
           <h3>Korean License Plate Detection</h3>
           <div class="tags">
@@ -636,7 +749,7 @@
             <span class="tag">Award</span>
           </div>
           <p>
-            Built two-stage detection pipeline combining object detection and OCR for intelligent transportation systems. 
+            Two-stage detection pipeline combining object detection and OCR for intelligent transportation systems.
             Won 2nd place out of 40 teams in competition.
           </p>
           <div class="metrics">
@@ -645,25 +758,7 @@
           <a href="https://github.com/saeheeeom/2023_ComputerVision">View Project →</a>
         </div>
 
-        <div class="project-card">
-          <div class="icon">🚦</div>
-          <h3>Atlanta Traffic Visualization Dashboard</h3>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">Leaflet.js</span>
-            <span class="tag">Time Series</span>
-            <span class="tag">Data Viz</span>
-          </div>
-          <p>
-            Developed web-based traffic prediction dashboard for Atlanta's I-285 with 330,000+ data points. Features historical/forecast mode switching, animated timeline visualization, and compressed single-file deployment using Leaflet.js for geospatial rendering.
-          </p>
-          <div class="metrics">
-            <strong>Performance:</strong> 75% compression ratio, <5MB final size, 1-3s initial load
-          </div>
-          <a href="traffic_dashboard_final.html">View Dashboard →</a>
-        </div>
-
-        <div class="project-card">
+        <div class="project-card fade-in" data-category="ml-systems">
           <div class="icon">🔍</div>
           <h3>Hybrid Vector Search System</h3>
           <div class="tags">
@@ -673,56 +768,16 @@
             <span class="tag">IVF-PQ</span>
           </div>
           <p>
-            Designed and implemented a hybrid search engine combining structured SQL queries with vector similarity search, 
-            enabling both ANN-based retrieval and relational filtering on large-scale text corpora.
+            Hybrid search engine combining structured SQL queries with vector similarity search, enabling ANN-based
+            retrieval and relational filtering on large-scale text corpora.
           </p>
           <div class="metrics">
-            <strong>Key Achievement:</strong> Adaptive query strategies that dynamically tune search scope based on filter selectivity, 
-            reducing latency while preserving retrieval accuracy
+            <strong>Key Achievement:</strong> Adaptive query strategies dynamically tune search scope based on filter selectivity, reducing latency while preserving accuracy
           </div>
           <a href="#">View Project →</a>
         </div>
 
-
-        <div class="project-card">
-          <div class="icon">⚖️</div>
-          <h3>Legal Analytics Platform</h3>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">SQL</span>
-            <span class="tag">NLP</span>
-            <span class="tag">IE</span>
-          </div>
-          <p>
-            Drove end-to-end development of South Korea's first legal data analytics platform, visualizing sentencing patterns 
-            and enhancing accessibility for non-expert users.
-          </p>
-          <div class="metrics">
-            <strong>Impact:</strong> 4x higher user engagement from non-legal professionals, published at EMNLP 2022 Workshop
-          </div>
-          <a href="#">View Details →</a>
-        </div>
-
-        <div class="project-card">
-          <div class="icon">🗄️</div>
-          <h3>SQL Database Engine & Recommender</h3>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">SQLite</span>
-            <span class="tag">CF</span>
-            <span class="tag">Lark</span>
-          </div>
-          <p>
-            Implemented a SQL database engine from scratch with Lark-based parser, supporting DDL/DML operations. 
-            Integrated collaborative filtering for book recommendations.
-          </p>
-          <div class="metrics">
-            <strong>Performance:</strong> <1s execution on 100K+ rows, +18% Precision@10 vs baseline
-          </div>
-          <a href="#">View Code →</a>
-        </div>
-
-        <div class="project-card">
+        <div class="project-card fade-in" data-category="ml-systems">
           <div class="icon">🎯</div>
           <h3>CRM Targeting Ensemble</h3>
           <div class="tags">
@@ -732,16 +787,16 @@
             <span class="tag">RFM</span>
           </div>
           <p>
-            Built ensemble model combining gradient boosting and sequential recommendation to optimize customer targeting 
-            for marketing campaigns. Deployed on AWS for real-time predictions.
+            Ensemble model combining gradient boosting and sequential recommendation to optimize customer targeting
+            for marketing campaigns. Deployed on AWS for real-time predictions with 10K+ review sentiment analysis.
           </p>
           <div class="metrics">
-            <strong>Business Impact:</strong> 42% boost in purchase rate, 14% campaign engagement lift
+            <strong>Business Impact:</strong> +42% purchase rate, +14% campaign engagement lift
           </div>
           <a href="#">View Project →</a>
         </div>
 
-        <div class="project-card">
+        <div class="project-card fade-in" data-category="ml-systems">
           <div class="icon">📞</div>
           <h3>Call Volume Forecasting</h3>
           <div class="tags">
@@ -751,13 +806,70 @@
             <span class="tag">Time Series</span>
           </div>
           <p>
-            Forecasted call center volume using hybrid CatBoost and LSTM approach, enabling managers to optimize 
-            workforce allocation and reduce operational costs.
+            Hybrid CatBoost + LSTM forecasting for call center volume, enabling managers to optimize
+            workforce allocation and reduce operational costs with an interactive Streamlit dashboard.
           </p>
           <div class="metrics">
-            <strong>Accuracy:</strong> MAE < 100, 29% lower monthly error vs baseline
+            <strong>Accuracy:</strong> MAE &lt; 100, 29% lower monthly error vs baseline
           </div>
           <a href="#">View Demo →</a>
+        </div>
+
+        <div class="project-card fade-in" data-category="data-engineering">
+          <div class="icon">⚖️</div>
+          <h3>Legal Analytics Platform</h3>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">NLP</span>
+            <span class="tag">IE</span>
+          </div>
+          <p>
+            South Korea's first legal data analytics platform — end-to-end development visualizing sentencing patterns
+            and enhancing accessibility for non-expert users through information extraction pipelines.
+          </p>
+          <div class="metrics">
+            <strong>Impact:</strong> 4x higher engagement from non-legal professionals · EMNLP 2022 Workshop · 161% YoY sales increase
+          </div>
+          <a href="#">View Details →</a>
+        </div>
+
+        <div class="project-card fade-in" data-category="data-engineering">
+          <div class="icon">🚦</div>
+          <h3>Atlanta Traffic Visualization Dashboard</h3>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Leaflet.js</span>
+            <span class="tag">Time Series</span>
+            <span class="tag">Data Viz</span>
+          </div>
+          <p>
+            Web-based traffic prediction dashboard for Atlanta's I-285 with 330,000+ data points. Features
+            historical/forecast mode switching and animated timeline visualization with geospatial rendering.
+          </p>
+          <div class="metrics">
+            <strong>Performance:</strong> 75% compression ratio, &lt;5MB final size, 1–3s initial load
+          </div>
+          <a href="traffic_dashboard_final.html">View Dashboard →</a>
+        </div>
+
+        <div class="project-card fade-in" data-category="data-engineering">
+          <div class="icon">🗄️</div>
+          <h3>SQL Database Engine & Recommender</h3>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">SQLite</span>
+            <span class="tag">CF</span>
+            <span class="tag">Lark</span>
+          </div>
+          <p>
+            SQL database engine built from scratch with Lark-based parser, supporting DDL/DML operations.
+            Integrated collaborative filtering for book recommendations.
+          </p>
+          <div class="metrics">
+            <strong>Performance:</strong> &lt;1s execution on 100K+ rows, +18% Precision@10 vs baseline
+          </div>
+          <a href="#">View Code →</a>
         </div>
 
       </div>
@@ -768,56 +880,66 @@
     <div class="container">
       <h2 class="section-title">Experience</h2>
       <div class="timeline">
-        
-        <div class="timeline-item">
-          <div class="company">Salesforce</div>
-          <div class="role">Data Scientist Intern</div>
-          <div class="period">Jan 2025 - Jun 2025 | Seoul, South Korea</div>
+
+        <div class="timeline-item fade-in">
+          <div class="company">GT EI-Lab | NLP Research Lab</div>
+          <div class="role">Research Intern · Advisor: Prof. Mark Riedl</div>
+          <div class="period">Feb 2026 – Present | Atlanta, GA</div>
           <ul>
-            <li>Engineered automated ETL pipelines integrating Snowflake, Tableau Prep, and RBAC systems, reducing manual effort by 90%</li>
-            <li>Designed scoring algorithm and recommender system to predict product purchase likelihood, informing GTM strategy across 50+ industries</li>
+            <li>LLM training data attribution research; enriched pre-training corpus with 576 topic × format bins via stratified and proportional sampling (~5B tokens)</li>
+            <li>Investigating data quality signals and provenance to improve LLM pre-training transparency and reproducibility</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="company">Salesforce</div>
+          <div class="role">Data Scientist Intern · Industry GTM Team</div>
+          <div class="period">Jan 2025 – Jun 2025 | Seoul, South Korea</div>
+          <ul>
+            <li>Designed scoring algorithm and recommender system to predict enterprise SaaS opportunity close rates across 50+ industries, informing GTM strategy</li>
+            <li>Engineered automated Snowflake-Tableau ETL pipelines with RBAC dashboards for Country Manager and 50+ AEs, reducing manual reporting by 90%</li>
             <li>Collaborated with global stakeholders (Korea, USA, Japan) to unify data definitions and ensure consistent analytics</li>
           </ul>
         </div>
 
-        <div class="timeline-item">
+        <div class="timeline-item fade-in">
+          <div class="company">SNU SKI-ML Lab</div>
+          <div class="role">Research Intern (NLP) · Advisor: Prof. Jay-yoon Lee</div>
+          <div class="period">Jun 2024 – Jan 2025 | Seoul, South Korea</div>
+          <ul>
+            <li>Co-authored paper on Controlled Text Generation; improved fluency (+23% BERTScore) and reduced perplexity (-22%) across LLaMA, Phi, Qwen</li>
+            <li>Fine-tuned LLMs via SFT using synthetic datasets generated with ChatGPT, achieving +31% constraint satisfaction</li>
+            <li>Built scalable evaluation framework benchmarking LLM outputs; led journal clubs on RAG, autonomous agents, quantization, and prompt engineering</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item fade-in">
           <div class="company">SNU MIPA Lab</div>
           <div class="role">Research Intern (Computer Vision)</div>
-          <div class="period">Jan 2024 - Feb 2024 | Seoul, South Korea</div>
+          <div class="period">Jan 2024 – Feb 2024 | Seoul, South Korea</div>
           <ul>
-            <li>Developed GuardianDream, an adversarial defense against diffusion-based deepfakes by injecting subtle noise into training photos</li>
-            <li>Achieved measurable protection metrics: -2% generated image quality and -3% facial similarity degradation to hinder identity misuse</li>
-            <li>Led journal club sessions on cutting-edge generative AI: GANs, Diffusion Models, Vision-Language Models, LoRA, and SOTA methodologies</li>
+            <li>Developed GuardianDream — adversarial defense against diffusion-based deepfakes by injecting subtle noise into training photos</li>
+            <li>Achieved measurable protection: -2% generated image quality, -3% facial similarity degradation to hinder identity misuse</li>
+            <li>Led journal club sessions on GANs, Diffusion Models, Vision-Language Models, LoRA, and SOTA generative AI methods</li>
           </ul>
         </div>
 
-        <div class="timeline-item">
-          <div class="company">SNU SKI-ML Lab</div>
-          <div class="role">Research Intern (NLP)</div>
-          <div class="period">Jun 2024 - Jan 2025 | Seoul, South Korea</div>
-          <ul>
-            <li>Co-authored paper on Controlled Text Generation, improving fluency (+23% BERTScore) and reducing perplexity (-22%)</li>
-            <li>Created scalable evaluation framework for benchmarking LLM outputs across multiple models and constraints</li>
-            <li>Shared reproducible research implementations on GitHub for team collaboration</li>
-          </ul>
-        </div>
-
-        <div class="timeline-item">
+        <div class="timeline-item fade-in">
           <div class="company">LBOX (Series C LegalTech)</div>
           <div class="role">Data Scientist Intern</div>
-          <div class="period">Jul 2022 - Jan 2023 | Seoul, South Korea</div>
+          <div class="period">Jul 2022 – Jan 2023 | Seoul, South Korea</div>
           <ul>
-            <li>Built 200+ SQL dashboards and user engagement analytics, driving 161% sales growth</li>
-            <li>Developed South Korea's first legal data analytics platform with 4x higher engagement from non-experts</li>
-            <li>Co-authored EMNLP 2022 workshop paper on Information Extraction for legal documents</li>
+            <li>Co-authored EMNLP 2022 workshop paper on Information Extraction for legal documents; built baseline models, evaluation frameworks, and legal ontologies</li>
+            <li>Built 200+ SQL/Redash dashboards and user engagement analytics, driving 161% YoY sales growth</li>
+            <li>Developed South Korea's first legal data analytics platform with 4x higher engagement from non-expert users</li>
             <li>Standardized company-wide data dictionary and event taxonomy, increasing analytics trust across teams</li>
           </ul>
         </div>
 
-        <div class="timeline-item">
+        <div class="timeline-item fade-in">
           <div class="company">Growth Hackers (SNU Data Science Club)</div>
           <div class="role">Data Science Project Lead</div>
-          <div class="period">Jul 2021 - Jun 2022 | Seoul, South Korea</div>
+          <div class="period">Jul 2021 – Jun 2022 | Seoul, South Korea</div>
           <ul>
             <li>Led compensated, industry-sponsored data science consulting projects</li>
             <li>Delivered CRM targeting and call center forecasting solutions with measurable business impact</li>
@@ -833,8 +955,8 @@
     <div class="container">
       <h2 class="section-title">Technical Skills</h2>
       <div class="skills-grid">
-        
-        <div class="skill-category">
+
+        <div class="skill-category fade-in">
           <h3><span class="icon">💻</span> Programming & ML</h3>
           <div class="skill-list">
             <span class="skill-item">Python</span>
@@ -842,44 +964,60 @@
             <span class="skill-item">TensorFlow</span>
             <span class="skill-item">Scikit-Learn</span>
             <span class="skill-item">PySpark</span>
+            <span class="skill-item">C++</span>
             <span class="skill-item">Java</span>
             <span class="skill-item">R</span>
           </div>
         </div>
 
-        <div class="skill-category">
+        <div class="skill-category fade-in">
+          <h3><span class="icon">🤖</span> LLMs & Generative AI</h3>
+          <div class="skill-list">
+            <span class="skill-item">Hugging Face</span>
+            <span class="skill-item">vLLM</span>
+            <span class="skill-item">LangChain</span>
+            <span class="skill-item">OpenAI API</span>
+            <span class="skill-item">Transformers</span>
+            <span class="skill-item">FAISS</span>
+            <span class="skill-item">RAG</span>
+            <span class="skill-item">Agentic AI</span>
+          </div>
+        </div>
+
+        <div class="skill-category fade-in">
+          <h3><span class="icon">⚙️</span> AI & Model Ops</h3>
+          <div class="skill-list">
+            <span class="skill-item">Fine-tuning (SFT)</span>
+            <span class="skill-item">Quantization</span>
+            <span class="skill-item">Synthetic Data</span>
+            <span class="skill-item">Model Evaluation</span>
+            <span class="skill-item">llama.cpp</span>
+            <span class="skill-item">Prompt Engineering</span>
+          </div>
+        </div>
+
+        <div class="skill-category fade-in">
           <h3><span class="icon">🗄️</span> Data Systems</h3>
           <div class="skill-list">
             <span class="skill-item">SQL</span>
             <span class="skill-item">BigQuery</span>
             <span class="skill-item">MySQL</span>
-            <span class="skill-item">SQLite</span>
-            <span class="skill-item">Spark</span>
-            <span class="skill-item">Hadoop</span>
             <span class="skill-item">Snowflake</span>
+            <span class="skill-item">Spark</span>
+            <span class="skill-item">Databricks</span>
+            <span class="skill-item">Hadoop</span>
           </div>
         </div>
 
-        <div class="skill-category">
-          <h3><span class="icon">🤖</span> NLP & LLMs</h3>
-          <div class="skill-list">
-            <span class="skill-item">Hugging Face</span>
-            <span class="skill-item">LangChain</span>
-            <span class="skill-item">OpenAI API</span>
-            <span class="skill-item">NLTK</span>
-            <span class="skill-item">Transformers</span>
-            <span class="skill-item">FAISS</span>
-          </div>
-        </div>
-
-        <div class="skill-category">
+        <div class="skill-category fade-in">
           <h3><span class="icon">☁️</span> Cloud & Tools</h3>
           <div class="skill-list">
             <span class="skill-item">AWS</span>
             <span class="skill-item">GCP</span>
-            <span class="skill-item">Tableau</span>
-            <span class="skill-item">Git</span>
             <span class="skill-item">Docker</span>
+            <span class="skill-item">Kubernetes</span>
+            <span class="skill-item">Git</span>
+            <span class="skill-item">Tableau</span>
             <span class="skill-item">Streamlit</span>
           </div>
         </div>
@@ -892,37 +1030,36 @@
     <div class="container">
       <h2 class="section-title">Publications</h2>
       <div class="publications">
-        
-        <div class="publication">
+
+        <div class="publication fade-in">
+          <h3>Locate & Edit: Text Editing-Based Controlled Text Generation for Black-Box LMs</h3>
+          <p class="authors">H. R. Son, Saehee Eom, et al.</p>
+          <p class="venue">Under Revision · July 2025</p>
+          <p>
+            Energy model-based approach for controlled text generation handling multiple constraints simultaneously
+            (toxicity, logical consistency, formality). Achieved significant improvements in BERTScore (+23%) and
+            perplexity (-22%) across multiple LLM architectures including LLaMA, Phi, and Qwen.
+          </p>
+        </div>
+
+        <div class="publication fade-in">
           <h3>Syntactic Complexity and Prompt Design: A Linguistic Analysis of LLM Performance</h3>
           <p class="authors">Saehee Eom</p>
           <p class="venue">B.A. Thesis, Department of Linguistics, Seoul National University · December 2024</p>
           <p>
-            Defined and operationalized a set of linguistically motivated syntactic complexity metrics to analyze LLM performance 
-            across QA, text completion, and English–Korean translation tasks. Employed in-context learning (1-shot, 3-shot), 
-            kNN-based example selection, and instruction tuning, identifying POS divergence as a key predictor of performance degradation.
+            Defined and operationalized linguistically motivated syntactic complexity metrics to analyze LLM performance
+            across QA, text completion, and English–Korean translation. Employed in-context learning, kNN-based example
+            selection, and instruction tuning — identifying POS divergence as a key predictor of performance degradation.
           </p>
         </div>
 
-
-        <div class="publication">
-          <h3>Locate & Edit: Text Editing-Based Controlled Text Generation for Black-Box LMs</h3>
-          <p class="authors">H. R. Son, Saehee Eom, et al.</p>
-          <p class="venue">July 2025</p>
-          <p>
-            Proposed an energy model-based approach for controlled text generation that handles multiple constraints 
-            simultaneously (toxicity, logical consistency, formality) while maintaining text fluency and content preservation. 
-            Achieved significant improvements in BERTScore (+23%) and perplexity (-22%) across multiple LLM architectures.
-          </p>
-        </div>
-
-        <div class="publication">
+        <div class="publication fade-in">
           <h3>Data-efficient End-to-end Information Extraction for Statistical Legal Analysis</h3>
           <p class="authors">W. Hwang, Saehee Eom, et al.</p>
           <p class="venue">EMNLP 2022 Workshop (NLLP) | December 2022</p>
           <p>
-            Presented a data-efficient approach to information extraction from legal documents, including novel legal ontologies, 
-            baseline models, and evaluation frameworks. Work contributed to the development of South Korea's first legal analytics platform.
+            Data-efficient approach to information extraction from legal documents — including novel legal ontologies,
+            baseline models, and evaluation frameworks. Contributed to South Korea's first legal analytics platform.
           </p>
         </div>
 
@@ -938,7 +1075,7 @@
         <a href="https://www.linkedin.com/in/saehee-eom/" target="_blank">LinkedIn</a>
         <a href="https://github.com/saeheeeom" target="_blank">GitHub</a>
       </div>
-      <p style="margin-top: 2rem; opacity: 0.7;">© 2025 Saehee Eom. All rights reserved.</p>
+      <p style="margin-top: 2rem; opacity: 0.7;">© 2026 Saehee Eom. All rights reserved.</p>
     </div>
   </footer>
 
@@ -950,14 +1087,79 @@
         const target = document.querySelector(this.getAttribute('href'));
         const navHeight = document.querySelector('nav').offsetHeight;
         const targetPosition = target.offsetTop - navHeight;
-        
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
       });
     });
 
-    // Add active state to nav on scroll
-    window.addEventListener('scroll', () => {
-      const sections = document.querySelectorAll('section
+    // Active nav link on scroll
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+          const navLink = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+          if (navLink) navLink.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    document.querySelectorAll('section[id]').forEach(s => navObserver.observe(s));
+
+    // Scroll fade-in with stagger for sibling cards
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const siblings = Array.from(entry.target.parentElement.querySelectorAll('.fade-in:not(.is-visible)'));
+          const idx = siblings.indexOf(entry.target);
+          setTimeout(() => entry.target.classList.add('is-visible'), Math.max(0, idx) * 80);
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+    // Animated counters
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          if (el.dataset.animated) return;
+          el.dataset.animated = 'true';
+          const count = parseInt(el.dataset.count);
+          const suffix = el.dataset.suffix || '';
+          let start = 0;
+          const steps = 60;
+          const increment = count / steps;
+          const interval = 1200 / steps;
+          const timer = setInterval(() => {
+            start += increment;
+            if (start >= count) {
+              start = count;
+              clearInterval(timer);
+            }
+            el.textContent = Math.floor(start) + suffix;
+          }, interval);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.number[data-count]').forEach(el => counterObserver.observe(el));
+
+    // Project filter tabs
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        projectCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

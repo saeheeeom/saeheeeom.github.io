@@ -108,14 +108,26 @@
       border-bottom: 1px solid var(--border);
     }
 
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 240px;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+    }
+
     .hero-photo {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
+      width: 240px;
+      height: 300px;
+      border-radius: 12px;
       object-fit: cover;
       display: block;
-      margin-bottom: 1.5rem;
       border: 2px solid var(--border);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
 
     .hero-name {
@@ -135,7 +147,6 @@
     .hero-desc {
       font-size: 1.0625rem;
       color: var(--muted);
-      max-width: 520px;
       line-height: 1.75;
       margin-bottom: 2.5rem;
     }
@@ -463,15 +474,36 @@
     }
 
     /* ─── Responsive ─── */
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       nav ul { gap: 1.25rem; }
       nav a { font-size: 0.8rem; }
       #hero { padding: 7rem 0 4rem; }
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .hero-photo {
+        width: 100%;
+        max-width: 280px;
+        height: 320px;
+        margin: 0 auto;
+        order: -1;
+      }
       .skill-group { grid-template-columns: 1fr; gap: 0.5rem; }
       .project-meta { flex-direction: column; gap: 0.2rem; }
       .exp-header { flex-direction: column; gap: 0.15rem; }
       .stats-row { gap: 2rem; }
       .projects-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    }
+    
+    @media (max-width: 640px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+      .hero-photo {
+        width: 100%;
+        height: 280px;
+      }
     }
   </style>
 </head>
@@ -493,24 +525,28 @@
   <!-- Hero -->
   <section id="hero">
     <div class="container">
-      <img
-        class="hero-photo fade-in"
-        src="profile.jpg"
-        alt="Saehee Eom"
-        onerror="this.style.display='none'"
-      >
-      <h1 class="hero-name fade-in">Saehee Eom</h1>
-      <p class="hero-role fade-in">ML Researcher &amp; AI Engineer</p>
-      <p class="hero-desc fade-in">
-        Building at the frontier of large language models and agentic AI.
-        MS Analytics student at Georgia Tech, with research spanning NLP,
-        computer vision, and multimodal AI systems.
-      </p>
-      <div class="hero-links fade-in">
-        <a href="mailto:seom@gatech.edu">seom@gatech.edu</a>
-        <a href="https://www.linkedin.com/in/saehee-eom/" target="_blank">LinkedIn ↗</a>
-        <a href="https://github.com/saeheeeom" target="_blank">GitHub ↗</a>
-        <a href="SaeheeEom_Resume_DS_1031.pdf" target="_blank">Resume ↗</a>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-name fade-in">Saehee Eom</h1>
+          <p class="hero-role fade-in">ML Researcher &amp; AI Engineer</p>
+          <p class="hero-desc fade-in">
+            Building at the frontier of large language models and agentic AI.
+            MS Analytics student at Georgia Tech, with research spanning NLP,
+            computer vision, and multimodal AI systems.
+          </p>
+          <div class="hero-links fade-in">
+            <a href="mailto:seom@gatech.edu">seom@gatech.edu</a>
+            <a href="https://www.linkedin.com/in/saehee-eom/" target="_blank">LinkedIn ↗</a>
+            <a href="https://github.com/saeheeeom" target="_blank">GitHub ↗</a>
+            <a href="SaeheeEom_Resume_DS_1031.pdf" target="_blank">Resume ↗</a>
+          </div>
+        </div>
+        <img
+          class="hero-photo fade-in"
+          src="profile.jpg"
+          alt="Saehee Eom"
+          onerror="this.style.display='none'"
+        >
       </div>
     </div>
   </section>
@@ -652,574 +688,4 @@
           <p class="project-desc">
             Co-authored research on energy model-based controlled text generation for black-box LLMs,
             handling multiple constraints simultaneously — toxicity, logical consistency, formality —
-            while preserving fluency. Fine-tuned via SFT using synthetic datasets.
-          </p>
-          <p class="project-impact">+23% BERTScore · −22% perplexity · +31% constraint satisfaction across LLaMA, Phi, Qwen</p>
-          <div class="project-tags">
-            <span class="tag">PyTorch</span>
-            <span class="tag">LLMs</span>
-            <span class="tag">NLP</span>
-            <span class="tag">SFT</span>
-          </div>
-          <a href="L&E.pdf" class="project-link">View overview ↗</a>
-        </div>
-      </div>
-
-      <!-- 04 Syntactic Complexity -->
-      <div class="project-row fade-in" data-category="ai-research">
-        <div class="project-icon-col">
-          <span class="project-emoji">🧠</span>
-          <span class="project-num">04</span>
-        </div>
-        <div class="project-body">
-          <div class="project-meta">
-            <span class="project-title">Syntactic Complexity &amp; LLM Performance</span>
-            <span class="project-category">AI Research</span>
-          </div>
-          <p class="project-info">
-            <img class="logo-xs" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://snu.ac.kr&size=64" alt="SNU" onerror="this.style.display='none'">
-            SNU · B.A. Thesis · December 2024
-          </p>
-          <p class="project-desc">
-            Quantified the effects of syntactic complexity on LLM performance across QA, text completion,
-            and EN–KO translation using 8 linguistically motivated metrics. Identified POS divergence as
-            the key bottleneck and demonstrated prompt engineering strategies to mitigate degradation.
-          </p>
-          <p class="project-impact">In-context learning, kNN example selection, instruction tuning</p>
-          <div class="project-tags">
-            <span class="tag">Linguistics</span>
-            <span class="tag">LLMs</span>
-            <span class="tag">Prompt Engineering</span>
-          </div>
-          <a href="LingThesis.pdf" class="project-link">View paper ↗</a>
-        </div>
-      </div>
-
-      <!-- 05 GuardianDream -->
-      <div class="project-row fade-in" data-category="ai-research">
-        <div class="project-icon-col">
-          <span class="project-emoji">🛡️</span>
-          <span class="project-num">05</span>
-        </div>
-        <div class="project-body">
-          <div class="project-meta">
-            <span class="project-title">GuardianDream: Adversarial Defense</span>
-            <span class="project-category">AI Research</span>
-          </div>
-          <p class="project-info">
-            <img class="logo-xs" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://snu.ac.kr&size=64" alt="SNU" onerror="this.style.display='none'">
-            SNU MIPA Lab · 2024
-          </p>
-          <p class="project-desc">
-            Adversarial defense system against diffusion-based deepfakes — injects imperceptible noise
-            into training photos to degrade unauthorized AI-generated identity recreation and protect
-            against identity misuse.
-          </p>
-          <p class="project-impact">−2% generated image quality · −3% facial similarity degradation</p>
-          <div class="project-tags">
-            <span class="tag">PyTorch</span>
-            <span class="tag">Diffusion Models</span>
-            <span class="tag">Computer Vision</span>
-          </div>
-          <a href="GuardianDream.pdf" class="project-link">View research ↗</a>
-        </div>
-      </div>
-
-      <!-- 06 License Plate Detection -->
-      <div class="project-row fade-in" data-category="ai-research">
-        <div class="project-icon-col">
-          <span class="project-emoji">🚗</span>
-          <span class="project-num">06</span>
-        </div>
-        <div class="project-body">
-          <div class="project-meta">
-            <span class="project-title">Korean License Plate Detection</span>
-            <span class="project-category">AI Research</span>
-          </div>
-          <p class="project-info">
-            <img class="logo-xs" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://snu.ac.kr&size=64" alt="SNU" onerror="this.style.display='none'">
-            SNU · 2nd place / 40 teams
-          </p>
-          <p class="project-desc">
-            Two-stage detection pipeline combining object detection and OCR for intelligent transportation
-            systems. Won 2nd place out of 40 teams in competition.
-          </p>
-          <p class="project-impact">87.60% OCR accuracy · 0.72 mean IoU · 81% end-to-end detection</p>
-          <div class="project-tags">
-            <span class="tag">Faster R-CNN</span>
-            <span class="tag">EasyOCR</span>
-            <span class="tag">Computer Vision</span>
-          </div>
-          <a href="https://github.com/saeheeeom/2023_ComputerVision" class="project-link">View project ↗</a>
-        </div>
-      </div>
-
-      <!-- 07 Hybrid Vector Search -->
-      <div class="project-row fade-in" data-category="ml-systems">
-        <div class="project-icon-col">
-          <span class="project-emoji">🔍</span>
-          <span class="project-num">07</span>
-        </div>
-        <div class="project-body">
-          <div class="project-meta">
-            <span class="project-title">Hybrid Vector Search System</span>
-            <span class="project-category">ML Systems</span>
-          </div>
-          <p class="project-info">
-            <img class="logo-xs" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://gatech.edu&size=64" alt="GT" onerror="this.style.display='none'">
-            Georgia Tech · 2025
-          </p>
-          <p class="project-desc">
-            Hybrid search engine combining structured SQL queries with FAISS vector similarity search,
-            enabling ANN-based retrieval and relational filtering on large-scale text corpora. Adaptive
-            query strategies dynamically tune search scope based on filter selectivity.
-          </p>
-          <div class="project-tags">
-            <span class="tag">FAISS</span>
-            <span class="tag">IVF-PQ</span>
-            <span class="tag">Python</span>
-            <span class="tag">SQL</span>
-          </div>
-          <a href="#" class="project-link">View project ↗</a>
-        </div>
-      </div>
-
-      <!-- 08 CRM Targeting Ensemble -->
-      <div class="project-row fade-in" data-category="ml-systems">
-        <div class="project-icon-col">
-          <span class="project-emoji">🎯</span>
-          <span class="project-num">08</span>
-        </div>
-        <div class="project-body">
-          <div class="project-meta">
-            <span class="project-title">CRM Targeting Ensemble</span>
-            <span class="project-category">ML Systems</span>
-          </div>
-          <p class="project-info">
-            <img class="logo-xs" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hyundai.com&size=64" alt="Hyundai" onerror="this.style.display='none'">
-            Hyundai Home Shopping · 2022
-          </p>
-          <p class="project-desc">
-            Ensemble model combining LightGBM gradient boosting and SASRec sequential recommendation
-            to optimize customer targeting for marketing campaigns. Deployed on AWS for real-time
-            predictions with sentiment analysis across 10K+ reviews.
-          </p>
-          <p class="project-impact">+42% purchase rate · +14% campaign engagement lift</p>
-          <div class="project-tags">
-            <span class="tag">LightGBM</span>
-            <span class="tag">SASRec</span>
-            <span class="tag">AWS</span>
-          </div>
-          <a href="#" class="project-link">View project ↗</a>
-        </div>
-      </div>
-
-      <!-- 09 Call Volume Forecasting -->
-      <div class="project-row fade-in" data-category="ml-systems">
-        <div class="project-icon-col">
-          <span class="project-emoji">📊</span>
-          <span class="project-num">09</span>
-        </div>
-        <div class="project-body">
-          <div class="project-meta">
-            <span class="project-title">Call Volume Forecasting</span>
-            <span class="project-category">ML Systems</span>
-          </div>
-          <p class="project-info">
-            <img class="logo-xs" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://snu.ac.kr&size=64" alt="SNU" onerror="this.style.display='none'">
-            Growth Hackers · SNU · 2022
-          </p>
-          <p class="project-desc">
-            Hybrid CatBoost + LSTM forecasting for call center volume with an interactive Streamlit
-            dashboard. Enabled managers to optimize workforce allocation and reduce operational costs.
-          </p>
-          <p class="project-impact">MAE &lt; 100 · 29% lower monthly error vs baseline</p>
-          <div class="project-tags">
-            <span class="tag">CatBoost</span>
-            <span class="tag">LSTM</span>
-            <span class="tag">Streamlit</span>
-          </div>
-          <a href="#" class="project-link">View demo ↗</a>
-        </div>
-      </div>
-
-      <!-- 10 Legal Analytics Platform -->
-      <div class="project-row fade-in" data-category="data-engineering">
-        <div class="project-icon-col">
-          <span class="project-emoji">⚖️</span>
-          <span class="project-num">10</span>
-        </div>
-        <div class="project-body">
-          <div class="project-meta">
-            <span class="project-title">Legal Analytics Platform</span>
-            <span class="project-category">Data Engineering</span>
-          </div>
-          <p class="project-info">
-            <img class="logo-xs" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://lbox.kr&size=64" alt="LBOX" onerror="this.style.display='none'">
-            LBOX · EMNLP 2022 Workshop
-          </p>
-          <p class="project-desc">
-            South Korea's first legal data analytics platform — end-to-end development visualizing
-            sentencing patterns and enhancing accessibility through information extraction pipelines.
-          </p>
-          <p class="project-impact">4× engagement from non-legal users · 161% YoY sales increase</p>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">NLP</span>
-            <span class="tag">IE</span>
-            <span class="tag">SQL</span>
-          </div>
-          <a href="#" class="project-link">View details ↗</a>
-        </div>
-      </div>
-
-      <!-- 11 Atlanta Traffic Dashboard -->
-      <div class="project-row fade-in" data-category="data-engineering">
-        <div class="project-icon-col">
-          <span class="project-emoji">🗺️</span>
-          <span class="project-num">11</span>
-        </div>
-        <div class="project-body">
-          <div class="project-meta">
-            <span class="project-title">Atlanta Traffic Visualization Dashboard</span>
-            <span class="project-category">Data Engineering</span>
-          </div>
-          <p class="project-info">
-            <img class="logo-xs" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://gatech.edu&size=64" alt="GT" onerror="this.style.display='none'">
-            Georgia Tech · 2025
-          </p>
-          <p class="project-desc">
-            Web-based traffic prediction dashboard for Atlanta's I-285 with 330,000+ data points.
-            Features historical/forecast mode switching and animated timeline visualization
-            with geospatial rendering via Leaflet.js.
-          </p>
-          <p class="project-impact">75% compression ratio · &lt;5MB · 1–3s initial load</p>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Leaflet.js</span>
-            <span class="tag">Time Series</span>
-          </div>
-          <a href="traffic_dashboard_final.html" class="project-link">View dashboard ↗</a>
-        </div>
-      </div>
-
-      <!-- 12 SQL Database Engine -->
-      <div class="project-row fade-in" data-category="data-engineering">
-        <div class="project-icon-col">
-          <span class="project-emoji">🗄️</span>
-          <span class="project-num">12</span>
-        </div>
-        <div class="project-body">
-          <div class="project-meta">
-            <span class="project-title">SQL Database Engine &amp; Recommender</span>
-            <span class="project-category">Data Engineering</span>
-          </div>
-          <p class="project-info">
-            <img class="logo-xs" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://gatech.edu&size=64" alt="GT" onerror="this.style.display='none'">
-            Georgia Tech · 2025
-          </p>
-          <p class="project-desc">
-            SQL database engine built from scratch with a Lark-based parser, supporting DDL/DML
-            operations. Integrated collaborative filtering for book recommendations.
-          </p>
-          <p class="project-impact">&lt;1s on 100K+ rows · +18% Precision@10 vs baseline</p>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">SQLite</span>
-            <span class="tag">Lark</span>
-          </div>
-          <a href="#" class="project-link">View code ↗</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Experience -->
-  <section id="experience">
-    <div class="container">
-      <p class="section-label">Experience</p>
-      <div class="exp-list">
-
-        <div class="exp-item fade-in">
-          <div class="exp-header">
-            <div class="exp-company-wrap">
-              <img class="logo-exp" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://gatech.edu&size=64" alt="GT" onerror="this.style.display='none'">
-              <span class="exp-company">GT EI-Lab · NLP Research Lab</span>
-            </div>
-            <span class="exp-period">Feb 2026 – Present</span>
-          </div>
-          <p class="exp-role">Research Intern · Advisor: Prof. Mark Riedl</p>
-          <p class="exp-location">Atlanta, GA</p>
-          <ul class="exp-bullets">
-            <li>LLM training data attribution research; enriched pre-training corpus with 576 topic × format bins via stratified and proportional sampling (~5B tokens)</li>
-            <li>Investigating data quality signals and provenance to improve LLM pre-training transparency and reproducibility</li>
-          </ul>
-        </div>
-
-        <div class="exp-item fade-in">
-          <div class="exp-header">
-            <div class="exp-company-wrap">
-              <img class="logo-exp" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://salesforce.com&size=64" alt="Salesforce" onerror="this.style.display='none'">
-              <span class="exp-company">Salesforce</span>
-            </div>
-            <span class="exp-period">Jan – Jun 2025</span>
-          </div>
-          <p class="exp-role">Data Scientist Intern · Industry GTM Team</p>
-          <p class="exp-location">Seoul, South Korea</p>
-          <ul class="exp-bullets">
-            <li>Designed scoring algorithm and recommender system to predict enterprise SaaS opportunity close rates across 50+ industries, informing GTM strategy</li>
-            <li>Engineered automated Snowflake-Tableau ETL pipelines with RBAC dashboards, reducing manual reporting by 90%</li>
-            <li>Collaborated with global stakeholders (Korea, USA, Japan) to unify data definitions</li>
-          </ul>
-        </div>
-
-        <div class="exp-item fade-in">
-          <div class="exp-header">
-            <div class="exp-company-wrap">
-              <img class="logo-exp" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://snu.ac.kr&size=64" alt="SNU" onerror="this.style.display='none'">
-              <span class="exp-company">SNU SKI-ML Lab</span>
-            </div>
-            <span class="exp-period">Jun 2024 – Jan 2025</span>
-          </div>
-          <p class="exp-role">Research Intern (NLP) · Advisor: Prof. Jay-yoon Lee</p>
-          <p class="exp-location">Seoul, South Korea</p>
-          <ul class="exp-bullets">
-            <li>Co-authored paper on Controlled Text Generation; +23% BERTScore, −22% perplexity across LLaMA, Phi, Qwen</li>
-            <li>Fine-tuned LLMs via SFT with ChatGPT-generated synthetic datasets; +31% constraint satisfaction</li>
-            <li>Built scalable LLM evaluation framework; led journal clubs on RAG, autonomous agents, quantization</li>
-          </ul>
-        </div>
-
-        <div class="exp-item fade-in">
-          <div class="exp-header">
-            <div class="exp-company-wrap">
-              <img class="logo-exp" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://snu.ac.kr&size=64" alt="SNU" onerror="this.style.display='none'">
-              <span class="exp-company">SNU MIPA Lab</span>
-            </div>
-            <span class="exp-period">Jan – Feb 2024</span>
-          </div>
-          <p class="exp-role">Research Intern (Computer Vision)</p>
-          <p class="exp-location">Seoul, South Korea</p>
-          <ul class="exp-bullets">
-            <li>Developed GuardianDream — adversarial defense against diffusion-based deepfakes</li>
-            <li>Led journal club on GANs, Diffusion Models, VLMs, LoRA, and SOTA generative AI</li>
-          </ul>
-        </div>
-
-        <div class="exp-item fade-in">
-          <div class="exp-header">
-            <div class="exp-company-wrap">
-              <img class="logo-exp" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://lbox.kr&size=64" alt="LBOX" onerror="this.style.display='none'">
-              <span class="exp-company">LBOX · Series C LegalTech</span>
-            </div>
-            <span class="exp-period">Jul 2022 – Jan 2023</span>
-          </div>
-          <p class="exp-role">Data Scientist Intern</p>
-          <p class="exp-location">Seoul, South Korea</p>
-          <ul class="exp-bullets">
-            <li>Co-authored EMNLP 2022 workshop paper on IE for legal documents; built baseline models, evaluation frameworks, and legal ontologies</li>
-            <li>Built 200+ SQL/Redash dashboards; drove 161% YoY sales growth</li>
-            <li>Developed South Korea's first legal analytics platform — 4× higher engagement from non-experts</li>
-          </ul>
-        </div>
-
-        <div class="exp-item fade-in">
-          <div class="exp-header">
-            <div class="exp-company-wrap">
-              <img class="logo-exp" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://snu.ac.kr&size=64" alt="SNU" onerror="this.style.display='none'">
-              <span class="exp-company">Growth Hackers · SNU Data Science Club</span>
-            </div>
-            <span class="exp-period">Jul 2021 – Jun 2022</span>
-          </div>
-          <p class="exp-role">Data Science Project Lead</p>
-          <p class="exp-location">Seoul, South Korea</p>
-          <ul class="exp-bullets">
-            <li>Led industry-sponsored data science consulting projects with measurable business outcomes</li>
-            <li>Delivered CRM targeting and call center forecasting solutions</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills">
-    <div class="container">
-      <p class="section-label">Skills</p>
-      <div class="skills-list fade-in">
-        <div class="skill-group">
-          <span class="skill-group-label">Programming &amp; ML</span>
-          <span class="skill-items">Python <span>·</span> PyTorch <span>·</span> TensorFlow <span>·</span> Scikit-Learn <span>·</span> PySpark <span>·</span> C++ <span>·</span> Java <span>·</span> R</span>
-        </div>
-        <div class="skill-group">
-          <span class="skill-group-label">LLMs &amp; Generative AI</span>
-          <span class="skill-items">Hugging Face <span>·</span> vLLM <span>·</span> LangChain <span>·</span> OpenAI API <span>·</span> Transformers <span>·</span> FAISS <span>·</span> RAG <span>·</span> Agentic AI</span>
-        </div>
-        <div class="skill-group">
-          <span class="skill-group-label">AI &amp; Model Ops</span>
-          <span class="skill-items">Fine-tuning (SFT) <span>·</span> Quantization <span>·</span> Synthetic Data <span>·</span> Model Evaluation <span>·</span> llama.cpp <span>·</span> Prompt Engineering</span>
-        </div>
-        <div class="skill-group">
-          <span class="skill-group-label">Data Systems</span>
-          <span class="skill-items">SQL <span>·</span> BigQuery <span>·</span> MySQL <span>·</span> Snowflake <span>·</span> Spark <span>·</span> Databricks <span>·</span> Hadoop</span>
-        </div>
-        <div class="skill-group">
-          <span class="skill-group-label">Cloud &amp; Tools</span>
-          <span class="skill-items">AWS <span>·</span> GCP <span>·</span> Docker <span>·</span> Kubernetes <span>·</span> Git <span>·</span> Tableau <span>·</span> Streamlit</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Publications -->
-  <section id="publications">
-    <div class="container">
-      <p class="section-label">Publications</p>
-      <div class="pub-list">
-        <div class="pub-item fade-in">
-          <span class="pub-num">[1]</span>
-          <div class="pub-content">
-            <p class="pub-title">Locate &amp; Edit: Text Editing-Based Controlled Text Generation for Black-Box LMs</p>
-            <p class="pub-authors">H. R. Son, Saehee Eom, et al.</p>
-            <p class="pub-venue">Under Revision · July 2025</p>
-            <p class="pub-desc">Energy model-based approach for controlled text generation handling multiple constraints simultaneously. +23% BERTScore, −22% perplexity across LLaMA, Phi, and Qwen.</p>
-          </div>
-        </div>
-        <div class="pub-item fade-in">
-          <span class="pub-num">[2]</span>
-          <div class="pub-content">
-            <p class="pub-title">Syntactic Complexity and Prompt Design: A Linguistic Analysis of LLM Performance</p>
-            <p class="pub-authors">Saehee Eom</p>
-            <p class="pub-venue">B.A. Thesis, Department of Linguistics, Seoul National University · December 2024</p>
-            <p class="pub-desc">Operationalized syntactic complexity metrics to analyze LLM performance across QA, text completion, and EN–KO translation. Identified POS divergence as a key predictor of degradation.</p>
-          </div>
-        </div>
-        <div class="pub-item fade-in">
-          <span class="pub-num">[3]</span>
-          <div class="pub-content">
-            <p class="pub-title">Data-efficient End-to-end Information Extraction for Statistical Legal Analysis</p>
-            <p class="pub-authors">W. Hwang, Saehee Eom, et al.</p>
-            <p class="pub-venue">EMNLP 2022 Workshop (NLLP) · December 2022</p>
-            <p class="pub-desc">Data-efficient IE from legal documents including novel legal ontologies, baseline models, and evaluation frameworks. Contributed to South Korea's first legal analytics platform.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div class="footer-links">
-        <a href="mailto:seom@gatech.edu">seom@gatech.edu</a>
-        <a href="https://www.linkedin.com/in/saehee-eom/" target="_blank">LinkedIn</a>
-        <a href="https://github.com/saeheeeom" target="_blank">GitHub</a>
-      </div>
-      <p class="footer-copy">© 2026 Saehee Eom</p>
-    </div>
-  </footer>
-
-  <script>
-    // Nav border on scroll
-    const navEl = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      navEl.classList.toggle('scrolled', window.scrollY > 20);
-    }, { passive: true });
-
-    // Active nav link on scroll
-    const navLinks = document.querySelectorAll('nav a[href^="#"]');
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(a => a.classList.remove('active'));
-          const link = document.querySelector(`nav a[href="#${entry.target.id}"]`);
-          if (link) link.classList.add('active');
-        }
-      });
-    }, { rootMargin: '-40% 0px -55% 0px' });
-    document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
-
-    // Smooth scroll
-    navLinks.forEach(a => {
-      a.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(a.getAttribute('href'));
-        if (!target) return;
-        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - navEl.offsetHeight - 8, behavior: 'smooth' });
-      });
-    });
-
-    // Scroll fade-in with stagger
-    const fadeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const siblings = Array.from(entry.target.parentElement.querySelectorAll('.fade-in:not(.visible)'));
-        const idx = siblings.indexOf(entry.target);
-        setTimeout(() => entry.target.classList.add('visible'), Math.max(0, idx) * 60);
-        fadeObserver.unobserve(entry.target);
-      });
-    }, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
-    document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
-
-    // Animated counters
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        if (el.dataset.animated) return;
-        el.dataset.animated = '1';
-        const target = parseInt(el.dataset.count);
-        const suffix = el.dataset.suffix || '';
-        let current = 0;
-        const steps = 50;
-        const interval = setInterval(() => {
-          current += target / steps;
-          if (current >= target) { current = target; clearInterval(interval); }
-          el.textContent = Math.floor(current) + suffix;
-        }, 1000 / steps);
-        counterObserver.unobserve(el);
-      });
-    }, { threshold: 0.5 });
-    document.querySelectorAll('.stat-number[data-count]').forEach(el => counterObserver.observe(el));
-
-    // Project filter — single-select, AI Research default
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectRows = document.querySelectorAll('.project-row');
-
-    function applyFilter(filter) {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      const activeBtn = document.querySelector(`.filter-btn[data-filter="${filter}"]`);
-      if (activeBtn) activeBtn.classList.add('active');
-      let n = 1;
-      projectRows.forEach(row => {
-        const hide = row.dataset.category !== filter;
-        row.classList.toggle('hidden', hide);
-        if (!hide) row.querySelector('.project-num').textContent = String(n++).padStart(2, '0');
-      });
-    }
-
-    // Default to AI Research on load
-    applyFilter('ai-research');
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        if (btn.classList.contains('active')) return; // already selected
-        applyFilter(btn.dataset.filter);
-      });
-    });
-
-    // Logo fallback: replace broken img with styled initial badge
-    document.querySelectorAll('img.logo-xs, img.logo-exp').forEach(img => {
-      img.addEventListener('error', function () {
-        const badge = document.createElement('span');
-        badge.className = this.classList.contains('logo-exp')
-          ? 'logo-badge exp'
-          : 'logo-badge';
-        badge.textContent = this.alt.slice(0, 3).toUpperCase();
-        this.replaceWith(badge);
-      });
-    });
-  </script>
-</body>
-</html>
+            while preserving fluency. Fine-tuned

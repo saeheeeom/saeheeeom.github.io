@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects · Saehee Eom</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+
+  <nav class="site-nav">
+    <a class="home" href="index.html">Saehee Eom</a>
+    <a href="publications.html">Publications</a>
+    <a href="projects.html" aria-current="page">Projects</a>
+    <a href="experience.html">Experience</a>
+  </nav>
+
+  <h1>Projects</h1>
+
+  <div class="entry">
+    <div class="entry-head">
+      <h3>Multimodal behavioral monitoring for mental health</h3>
+      <span class="when">Ongoing</span>
+    </div>
+    <p class="sub">Georgia Tech Sonification Lab, with Prof. Bruce Walker</p>
+    <p>An agent that holds short daily check-in conversations and passively picks up facial and speech signals. The signals feed a multimodal stress-prediction model and a dashboard that tracks each person against their own baseline over time.</p>
+  </div>
+
+  <div class="entry">
+    <div class="entry-head">
+      <h3>Hybrid vector search with query routing</h3>
+      <span class="when">2025</span>
+    </div>
+    <p class="sub">Georgia Tech, Database Systems (team project)</p>
+    <p>FAISS (IVF-PQ) vector search combined with SQLite metadata filters over 150K Wikipedia articles, feeding a RAG pipeline. Adaptive filter-first and search-first strategies cut latency 3–30×, and a small logistic-regression router picks the strategy per query (~96% F1).</p>
+  </div>
+
+  <div class="entry">
+    <div class="entry-head">
+      <h3>Atlanta I-285 traffic dashboard</h3>
+      <span class="when">2025</span>
+    </div>
+    <p class="sub">Georgia Tech, Data and Visual Analytics</p>
+    <p>An interactive map of historical and forecast traffic with timeline animation and live weather data. 330K+ data points are compressed and decoded in the browser, so the page loads in a few seconds.</p>
+    <div class="links"><a href="traffic_dashboard_final.html">Live dashboard</a><a href="https://github.com/saeheeeom/ATL_traffic_dashboard">Code</a></div>
+  </div>
+
+  <div class="entry">
+    <div class="entry-head">
+      <h3>GuardianDream: protecting faces from diffusion fine-tuning</h3>
+      <span class="when">2024</span>
+    </div>
+    <p class="sub">SNU MIPA Lab</p>
+    <p>Adds imperceptible noise to personal photos so that DreamBooth fine-tuning on them fails to reproduce the person's identity. Compared background-only and full-image perturbation, evaluated with FDFR, ISM, and SER-FIQ.</p>
+    <div class="links"><a href="GuardianDream.pdf">Report (PDF)</a></div>
+  </div>
+
+  <div class="entry">
+    <div class="entry-head">
+      <h3>Korean license plate recognition</h3>
+      <span class="when">2023</span>
+    </div>
+    <p class="sub">SNU, Computer Vision. 2nd place of 80 teams</p>
+    <p>Faster R-CNN detection followed by EasyOCR, trained on a self-collected Korean plate dataset covering varied lighting, weather, and occlusion. 96.5% character-level accuracy.</p>
+    <div class="links"><a href="https://github.com/saeheeeom/2023_ComputerVision">Code</a></div>
+  </div>
+
+  <footer>Last updated October 2026</footer>
+</div>
+</body>
+</html>

@@ -127,6 +127,31 @@ a.pub-title { color: var(--link); }
 .links { font-size: 1rem; margin-top: 0.4rem; }
 .links a + a { margin-left: 1rem; }
 
+/* Project tabs */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.1rem;
+  margin: -0.5rem 0 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+.tabs button {
+  font: inherit;
+  font-size: 1rem;
+  color: var(--muted);
+  background: none;
+  border: 0;
+  padding: 0.35rem 0;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+.tabs button:hover { color: var(--text); }
+.tabs button[aria-pressed="true"] { color: var(--text); font-weight: 600; border-bottom-color: var(--text); }
+.entry[hidden] { display: none; }
+
+.pub .note + .note { margin-top: -0.5rem; }
+
 footer {
   margin-top: 3rem;
   padding-top: 1rem;

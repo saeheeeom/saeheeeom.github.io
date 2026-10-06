@@ -22,55 +22,177 @@
 
   <h1>Projects</h1>
 
-  <div class="entry">
+  <div class="tabs" role="group" aria-label="Filter projects">
+    <button type="button" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" data-filter="ai" aria-pressed="false">AI &amp; Research</button>
+    <button type="button" data-filter="ml" aria-pressed="false">ML</button>
+    <button type="button" data-filter="data" aria-pressed="false">Data &amp; Analytics</button>
+    <button type="button" data-filter="swe" aria-pressed="false">Software</button>
+  </div>
+
+  <!-- AI & Research -->
+
+  <div class="entry" data-cat="ai">
     <div class="entry-head">
       <h3>Multimodal behavioral monitoring for mental health</h3>
       <span class="when">Ongoing</span>
     </div>
     <p class="sub">Georgia Tech Sonification Lab, with Prof. Bruce Walker</p>
-    <p>An agent that holds short daily check-in conversations and passively picks up facial and speech signals. The signals feed a multimodal stress-prediction model and a dashboard that tracks each person against their own baseline over time.</p>
+    <p>An agent that holds short daily check-in conversations and passively picks up facial and speech signals. Facial dynamics, speech prosody, and the transcribed content of the conversation feed a multimodal stress-prediction model and a dashboard that tracks each person against their own baseline over time.</p>
   </div>
 
-  <div class="entry">
+  <div class="entry" data-cat="ai">
     <div class="entry-head">
-      <h3>Hybrid vector search with query routing</h3>
+      <h3>Hybrid vector search and RAG with query routing</h3>
       <span class="when">2025</span>
     </div>
     <p class="sub">Georgia Tech, Database Systems (team project)</p>
-    <p>FAISS (IVF-PQ) vector search combined with SQLite metadata filters over 150K Wikipedia articles, feeding a RAG pipeline. Adaptive filter-first and search-first strategies cut latency 3–30×, and a small logistic-regression router picks the strategy per query (~96% F1).</p>
+    <p>FAISS (IVF-PQ) vector search over sentence-transformer embeddings, combined with SQLite metadata filters over 150K Wikipedia articles and fed into a LangChain RAG pipeline. Four strategies (filter-first or search-first, fixed or adaptive) cut latency 3–30×. A 2D-histogram selectivity estimator and a logistic-regression router choose the strategy per query (~96% F1, under 0.5 ms).</p>
   </div>
 
-  <div class="entry">
-    <div class="entry-head">
-      <h3>Atlanta I-285 traffic dashboard</h3>
-      <span class="when">2025</span>
-    </div>
-    <p class="sub">Georgia Tech, Data and Visual Analytics</p>
-    <p>An interactive map of historical and forecast traffic with timeline animation and live weather data. 330K+ data points are compressed and decoded in the browser, so the page loads in a few seconds.</p>
-    <div class="links"><a href="traffic_dashboard_final.html">Live dashboard</a><a href="https://github.com/saeheeeom/ATL_traffic_dashboard">Code</a></div>
-  </div>
-
-  <div class="entry">
+  <div class="entry" data-cat="ai">
     <div class="entry-head">
       <h3>GuardianDream: protecting faces from diffusion fine-tuning</h3>
       <span class="when">2024</span>
     </div>
     <p class="sub">SNU MIPA Lab</p>
-    <p>Adds imperceptible noise to personal photos so that DreamBooth fine-tuning on them fails to reproduce the person's identity. Compared background-only and full-image perturbation, evaluated with FDFR, ISM, and SER-FIQ.</p>
+    <p>Adds imperceptible noise to personal photos so that DreamBooth fine-tuning on them fails to reproduce the person's identity. Fine-tuned DreamBooth with LoRA, compared background-only and full-image perturbation, and evaluated with FDFR, ISM, and SER-FIQ.</p>
     <div class="links"><a href="GuardianDream.pdf">Report (PDF)</a></div>
   </div>
 
-  <div class="entry">
+  <div class="entry" data-cat="ai ml">
     <div class="entry-head">
       <h3>Korean license plate recognition</h3>
       <span class="when">2023</span>
     </div>
     <p class="sub">SNU, Computer Vision. 2nd place of 80 teams</p>
-    <p>Faster R-CNN detection followed by EasyOCR, trained on a self-collected Korean plate dataset covering varied lighting, weather, and occlusion. 96.5% character-level accuracy.</p>
+    <p>Faster R-CNN detection followed by EasyOCR, trained on a self-collected Korean plate dataset covering varied lighting, weather, and occlusion, with preprocessing refined through failure analysis. 96.5% character-level accuracy.</p>
     <div class="links"><a href="https://github.com/saeheeeom/2023_ComputerVision">Code</a></div>
+  </div>
+
+  <!-- Machine Learning -->
+
+  <div class="entry" data-cat="ml">
+    <div class="entry-head">
+      <h3>FireReady: wildfire vulnerability and resource allocation</h3>
+      <span class="when">Ongoing</span>
+    </div>
+    <p class="sub">WiDS × Accenture Song Datathon</p>
+    <p>Joins 9,129 California census tracts, 8,172 wildfire events, and OpenStreetMap infrastructure to find high-priority intervention zones. Tracts are scored on a six-factor priority metric and clustered into five profiles, then shown in a web app on AWS with LLM-generated resource recommendations. Experiments tracked in MLflow.</p>
+  </div>
+
+  <div class="entry" data-cat="ml">
+    <div class="entry-head">
+      <h3>Personalized recommendation for targeted campaigns</h3>
+      <span class="when">2022</span>
+    </div>
+    <p class="sub">Hyundai Home Shopping, via SNU Growth Hackers</p>
+    <p>An ensemble of LightGBM and SASRec (sequential recommendation) with RFM and cluster features, deployed on AWS. Raised target users' purchase rate by 42%, and insights pitched to the marketing team contributed to a 14% lift in campaign engagement.</p>
+  </div>
+
+  <div class="entry" data-cat="ml">
+    <div class="entry-head">
+      <h3>Call center volume forecasting</h3>
+      <span class="when">2022</span>
+    </div>
+    <p class="sub">Hyundai Home Shopping, via SNU Growth Hackers</p>
+    <p>CatBoost and LSTM forecasts of call demand, improving monthly accuracy by 29%. Deployed on AWS with a Streamlit app so managers could generate forecasts for staffing, plus a retraining pipeline for new data.</p>
+  </div>
+
+  <div class="entry" data-cat="ml">
+    <div class="entry-head">
+      <h3>Customer churn prediction</h3>
+    </div>
+    <p class="sub">Georgia Tech, Machine Learning</p>
+    <p>Logistic regression, random forest, and gradient boosting on multi-source telecom data, with SMOTE for class imbalance: a 61% lift in PR-AUC over baseline. K-means segmentation of 7,000+ at-risk customers to target retention.</p>
+  </div>
+
+  <div class="entry" data-cat="ml">
+    <div class="entry-head">
+      <h3>Explainable credit risk modeling</h3>
+      <span class="when">Ongoing</span>
+    </div>
+    <p class="sub">Lending Club data</p>
+    <p>Loan-default models on 100K+ records with features such as debt-to-income and credit-utilization trend, raising AUC from 0.74 to 0.82. Used Fairlearn to reduce disparities across income groups.</p>
+  </div>
+
+  <!-- Data & Analytics -->
+
+  <div class="entry" data-cat="data">
+    <div class="entry-head">
+      <h3>Atlanta I-285 traffic dashboard</h3>
+      <span class="when">2025</span>
+    </div>
+    <p class="sub">Georgia Tech, Data and Visual Analytics</p>
+    <p>An interactive Leaflet map of historical and forecast traffic with timeline animation and live weather from a REST API. 330K+ data points are compressed and decoded in the browser, so the page loads in a few seconds.</p>
+    <div class="links"><a href="traffic_dashboard_final.html">Live dashboard</a><a href="https://github.com/saeheeeom/ATL_traffic_dashboard">Code</a></div>
+  </div>
+
+  <div class="entry" data-cat="data">
+    <div class="entry-head">
+      <h3>Large-scale data processing with PySpark</h3>
+      <span class="when">2025</span>
+    </div>
+    <p class="sub">Georgia Tech, Data and Visual Analytics</p>
+    <p>PySpark pipelines over 10M+ NYC taxi records on AWS (S3, Athena), GCP (Dataproc, BigQuery), and Databricks. Window functions and partitioning made the queries 40% faster.</p>
+  </div>
+
+  <div class="entry" data-cat="data">
+    <div class="entry-head">
+      <h3>User retention and monetization analysis</h3>
+    </div>
+    <p class="sub">Spoon Radio, a live audio social platform</p>
+    <p>Found that users who paid tended to use their free welcome gifts soon after sign-up, and that users who finished onboarding stayed much longer, even though onboarding was instruction-heavy. Proposed a gamified onboarding that rewards gift use, plus an in-broadcast prompt.</p>
+  </div>
+
+  <div class="entry" data-cat="data">
+    <div class="entry-head">
+      <h3>KPI design and Tableau dashboards</h3>
+    </div>
+    <p class="sub">RECO, a waste management startup</p>
+    <p>Defined 20+ role-based KPIs and built dashboards for executives, managers, and field workers. Automated reporting with SQL over Google Sheets, cutting daily prep from about an hour to five minutes; every executive adopted the dashboards.</p>
+  </div>
+
+  <!-- Software -->
+
+  <div class="entry" data-cat="swe">
+    <div class="entry-head">
+      <h3>SQL database engine from scratch</h3>
+    </div>
+    <p class="sub">SNU, Databases</p>
+    <p>A SQL engine in Python with a Lark-based parser that executes statements such as SELECT and DELETE with complex WHERE clauses, with attention to time and memory. Also designed a library lending and recommendation database with a schema that takes new attributes without restructuring.</p>
+  </div>
+
+  <div class="entry" data-cat="swe">
+    <div class="entry-head">
+      <h3>Pac-Man game engine</h3>
+    </div>
+    <p class="sub">SNU, Programming Methodology (pair project)</p>
+    <p>A complete Pac-Man game in C++ and OpenGL, with an object-oriented entity hierarchy, collision detection, and real-time rendering.</p>
+  </div>
+
+  <div class="entry" data-cat="swe">
+    <div class="entry-head">
+      <h3>Data structures library</h3>
+      <span class="when">2022</span>
+    </div>
+    <p class="sub">SNU, Data Structures</p>
+    <p>Core data structures and algorithms in Java, written from scratch: big-integer arithmetic, stack-based expression evaluation, sorting, pattern matching, and graph pathfinding for subway routing.</p>
   </div>
 
   <footer>Last updated October 2026</footer>
 </div>
+
+<script>
+  const buttons = document.querySelectorAll('.tabs button');
+  const entries = document.querySelectorAll('.entry[data-cat]');
+  buttons.forEach(btn => btn.addEventListener('click', () => {
+    const f = btn.dataset.filter;
+    buttons.forEach(b => b.setAttribute('aria-pressed', b === btn));
+    entries.forEach(e => {
+      e.hidden = f !== 'all' && !e.dataset.cat.split(' ').includes(f);
+    });
+  }));
+</script>
 </body>
 </html>

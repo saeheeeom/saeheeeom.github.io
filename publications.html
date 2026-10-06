@@ -28,7 +28,8 @@
     <a class="pub-title" href="https://arxiv.org/abs/2606.19625">Where Does Social Reasoning Come From? Capability Provenance in Language Models</a>
     <div class="authors">Glenn Matlin, Chandreyi Chakraborty, <b>Saehee Eom</b>, Mika Okamoto, Rayan Castilla, Louis Jaburi, Alvin Deng, Taywon Min, Lucia Quirke, Stella Biderman, Mark Riedl</div>
     <div class="venue">COLM 2026 <a href="https://arxiv.org/abs/2606.19625">arXiv</a><a href="https://arxiv.org/pdf/2606.19625">PDF</a></div>
-    <p class="note">Maps which regions of OLMo 3's pretraining corpus support social versus STEM reasoning, by aggregating training-data attribution over a 576-bin topic × format taxonomy. I built the machine unlearning experiments that validate the attribution, and the stratified sampling pipelines.</p>
+    <p class="note">Maps which regions of OLMo 3's pretraining corpus support social versus STEM reasoning, by aggregating training-data attribution over a 576-bin topic × format taxonomy.</p>
+    <p class="note"><i>My part:</i> the machine unlearning experiments that validate the attribution, and the stratified sampling pipelines.</p>
   </div>
 
   <div class="pub">
@@ -36,14 +37,16 @@
     <!-- TODO: add a paper link when available -->
     <div class="authors"><b>Saehee Eom</b>, Tejas Khandwekar</div>
     <div class="venue">SocialAgent Workshop at NeurIPS 2026</div>
-    <p class="note">864 buyer–seller negotiations across two model families, crossing language (English, Korean) with seller urgency and buyer persona, plus LLM-judge coding of politeness strategies in the transcripts.</p>
+    <p class="note">If you tell an LLM negotiator to be "headstrong," does it behave the same in every language? We ran matched English and Korean self-play on 12 CraigslistBargain scenarios, crossing language with seller urgency and buyer persona (432 negotiations). Korean negotiations reached agreement far more often (77.3% vs. 52.5%), not because buyers opened differently but because sellers conceded more as the negotiation went on. A replication with Qwen3 showed the same direction. An LLM judge also found that Korean turns softened face-threatening moves more often, especially for sellers.</p>
+    <p class="note"><i>My part:</i> designed the factorial experiment and built the negotiation, LLM-judge, and reproducibility pipelines (Vertex AI, OpenRouter).</p>
   </div>
 
   <div class="pub">
     <a class="pub-title" href="https://aclanthology.org/2022.nllp-1.12/">Data-efficient End-to-end Information Extraction for Statistical Legal Analysis</a>
     <div class="authors">Wonseok Hwang, <b>Saehee Eom</b>, Hanuhl Lee, Hai Jin Park, Minjoon Seo</div>
     <div class="venue">NLLP Workshop at EMNLP 2022 <a href="https://aclanthology.org/2022.nllp-1.12/">ACL Anthology</a><a href="https://arxiv.org/abs/2211.01692">arXiv</a></div>
-    <p class="note">An end-to-end IE system for Korean court decisions that is competitive with a rule-based baseline from about 50 training examples per task, applied to 35k precedents.</p>
+    <p class="note">An end-to-end IE system for Korean court decisions that is competitive with a rule-based baseline from about 50 training examples per task, applied to 35k precedents. My first paper, from my time at LBOX.</p>
+    <p class="note"><i>My part:</i> baseline modeling, a regex-based evaluation pipeline, data analysis and visualization, and proofreading the paper.</p>
   </div>
 
   <h2>Under review</h2>
@@ -51,8 +54,9 @@
   <div class="pub">
     <span class="pub-title">LaSEr-Edit: Localized Span-level Error Editing with Energy-based Localization</span>
     <div class="authors">H. R. Son, <b>Saehee Eom</b>, et al.</div>
-    <div class="venue">Under review at TMLR <a href="L&amp;E.pdf">Earlier version (PDF)</a></div>
+    <div class="venue">Under review at TMLR <a href="https://arxiv.org/abs/2407.00740">arXiv</a><a href="L&amp;E.pdf">Earlier version overview (PDF)</a></div>
     <p class="note">Controlled text generation for black-box LMs by locating and editing only the spans that violate a constraint.</p>
+    <p class="note"><i>My part:</i> built evaluation pipelines across LLaMA, Phi, and Qwen that diagnosed weaknesses and guided the method's refinement, and created synthetic logical-consistency data for fine-tuning.</p>
   </div>
 
   <h2>Thesis</h2>
